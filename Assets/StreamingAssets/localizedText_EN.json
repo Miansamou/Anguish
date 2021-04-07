@@ -1,0 +1,120 @@
+{
+    "items": [
+        {
+            "key": "press_any_key",
+            "value": "Press any key"
+        },
+        {
+            "key": "play_btn",
+            "value": "Play"
+        },
+        {
+            "key": "configurations_btn",
+            "value": "Configurations"
+        },
+        {
+            "key": "credits_btn",
+            "value": "Credits"
+        },
+        {
+            "key": "quit_btn",
+            "value": "Quit Game"
+        },
+        {
+            "key": "new_game_btn",
+            "value": "New Game"
+        },
+        {
+            "key": "load_game_btn",
+            "value": "Load Game"
+        },
+        {
+            "key": "continue_game_btn",
+            "value": "Continue"
+        },
+        {
+            "key": "back_btn",
+            "value": "Back"
+        },
+        {
+            "key": "exit_game",
+            "value": "Are you sure to quit?"
+        },
+        {
+            "key": "yes_btn",
+            "value": "Yes"
+        },
+        {
+            "key": "no_btn",
+            "value": "No"
+        },
+        {
+            "key": "backToMenu_btn",
+            "value": "Back to Menu"
+        },
+        {
+            "key": "LoadScreen",
+            "value": "Loading"
+        },
+        {
+            "key": "ymir_intro_1",
+            "value": "Hello, little thing"
+        },
+        {
+            "key": "ymir_intro_2",
+            "value": "I heard your voice, but… kind of hoarse and distant"
+        },
+        {
+            "key": "ymir_intro_3",
+            "value": "What happened?"
+        },
+        {
+            "key": "ymir_intro_4",
+            "value": "Seems not to remember me, seems… frightened..."
+        },
+        {
+            "key": "ymir_intro_5",
+            "value": "I'm Ymir, the goddess of nature from Gahats, and your guide too."
+        },
+        {
+            "key": "ymir_intro_6",
+            "value": "You seem strange to me, you seem lost little thing"
+        },
+        {
+            "key": "ymir_intro_7",
+            "value": "Ah, I see you suffered a lot, but you must learn to move on"
+        },
+        {
+            "key": "ymir_intro_8",
+            "value": "Can you face the past for that?"
+        },
+        {
+            "key": "ymir_intro_9",
+            "value": "Don't fear, but careful, sometimes things aren't what they seem to be."
+        },
+        {
+            "key": "ymir_intro_10",
+            "value": "Good luck, my little thing"
+        },
+        {
+            "key": "open_cell",
+            "value": "Open cell"
+        },
+        {
+            "key": "open_door",
+            "value": "Open door"
+        },
+        {
+            "key": "movement_tutorial",
+            "value": "Use W, S, A e D to move"
+        },
+        {
+            "key": "interact_tutorial",
+            "value": "Press F to interact with the scenario"
+        },
+        {
+            "key": "other_tutorial",
+            "value": "Use SHIFT to run and SPACE to JUMP"
+        }
+    ]
+}

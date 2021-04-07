@@ -1,0 +1,116 @@
+{
+    "items": [
+        {
+            "key": "press_any_key",
+            "value": "Pressione qualquer botão"
+        },
+        {
+            "key": "play_btn",
+            "value": "Jogar"
+        },
+        {
+            "key": "configurations_btn",
+            "value": "Configurações"
+        },
+        {
+            "key": "credits_btn",
+            "value": "Créditos"
+        },
+        {
+            "key": "quit_btn",
+            "value": "Sair do Jogo"
+        },
+        {
+            "key": "new_game_btn",
+            "value": "Novo Jogo"
+        },
+        {
+            "key": "load_game_btn",
+            "value": "Carregar"
+        },
+        {
+            "key": "continue_game_btn",
+            "value": "Continuar"
+        },
+        {
+            "key": "back_btn",
+            "value": "Voltar"
+        },
+        {
+            "key": "exit_game",
+            "value": "Tem certeza que deseja sair?"
+        },
+        {
+            "key": "yes_btn",
+            "value": "Sim"
+        },
+        {
+            "key": "no_btn",
+            "value": "Não"
+        },
+        {
+            "key": "backToMenu_btn",
+            "value": "Voltar ao Menu"
+        },
+        {
+            "key": "ymir_intro_1",
+            "value": "Olá, pequenino"
+        },
+        {
+            "key": "ymir_intro_2",
+            "value": "Ouvi sua voz, mas… estava meio rouca e distante"
+        },
+        {
+            "key": "ymir_intro_3",
+            "value": "O que aconteceu?"
+        },
+        {
+            "key": "ymir_intro_4",
+            "value": "Parece não se lembrar de mim, me parece estar… assustado..."
+        },
+        {
+            "key": "ymir_intro_5",
+            "value": "Sou Ymir, a deusa da natureza de Gahats, e também sua guia."
+        },
+        {
+            "key": "ymir_intro_6",
+            "value": "Você me parece estranho, me parece perdido pequenino"
+        },
+        {
+            "key": "ymir_intro_7",
+            "value": "Ah, vejo que sofreu muito, mas você deve aprender a seguir em frente"
+        },
+        {
+            "key": "ymir_intro_8",
+            "value": "Será que consegue enfrentar o passado para isso?"
+        },
+        {
+            "key": "ymir_intro_9",
+            "value": "Não tema, mas cuidado, nem tudo é o que pode parecer"
+        },
+        {
+            "key": "ymir_intro_10",
+            "value": "Boa sorte, meu pequenino"
+        },
+        {
+            "key": "open_cell",
+            "value": "Abrir cela"
+        },
+        {
+            "key": "open_door",
+            "value": "Abrir porta"
+        },
+        {
+            "key": "movement_tutorial",
+            "value": "Use W, S, A e D para se movimentar"
+        },
+        {
+            "key": "interact_tutorial",
+            "value": "Aperte F para interagir com elementos do cenário"
+        },
+        {
+            "key": "other_tutorial",
+            "value": "Use SHIFT para correr e BARRA DE ESPAÇO para pular"
+        }
+    ]
+}
