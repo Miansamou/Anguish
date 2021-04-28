@@ -7,6 +7,7 @@ public class CommomDoor : Interactable
 {
     public GameObject textMessage;
     public string key;
+    public string animationName;
 
     private Animator animator;
 
@@ -31,7 +32,7 @@ public class CommomDoor : Interactable
 
     public override void Acting()
     {
-        animator.SetTrigger("Opening");
+        animator.SetTrigger(animationName);
         this.gameObject.GetComponent<BoxCollider>().enabled = false;
     }
 

@@ -111,6 +111,14 @@
         {
             "key": "other_tutorial",
             "value": "Use SHIFT para correr e BARRA DE ESPAÇO para pular"
+        },
+        {
+            "key": "look_mirror",
+            "value": "Olhar o espelho"
+        },
+        {
+            "key": "looking_mirror",
+            "value": "Annwn?"
         }
     ]
 }

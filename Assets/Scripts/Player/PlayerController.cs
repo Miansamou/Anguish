@@ -10,6 +10,8 @@ public class PlayerController : MonoBehaviour
     public float DistToGround;
     public float InterectableRange;
     public InputActionAsset Controller;
+    public float normalSpeed;
+    public float sprintSpeed;
 
     private CharacterController characterController;
     private float cameraAngle;
@@ -42,6 +44,15 @@ public class PlayerController : MonoBehaviour
         runKey = Map.FindAction("Run");
         interactKey = Map.FindAction("Interact");
 
+    }
+
+    public bool getInteractTrigger()
+    {
+        if (interactKey.triggered)
+        {
+            return true;
+        }
+        return false;
     }
 
     public void EnableControls()
@@ -143,11 +154,11 @@ public class PlayerController : MonoBehaviour
 
         Vector3 moving = new Vector3(movement.x, 0, movement.y).normalized;
 
-        playerSpeed = 9;
+        playerSpeed = normalSpeed;
 
         if (runKey.ReadValue<float>() == 1)
         {
-            playerSpeed = 12;
+            playerSpeed = sprintSpeed;
         }
 
 

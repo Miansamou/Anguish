@@ -22,8 +22,7 @@ public class DialogueLine : DialogueBaseClass
 
     private void Awake()
     {
-        dialogueEnded = false;
-        index = 0;
+        resetDialogue();
     }
 
     public void Play()
@@ -44,5 +43,11 @@ public class DialogueLine : DialogueBaseClass
     public bool getDialogueEnded()
     {
         return dialogueEnded;
+    }
+
+    public void resetDialogue()
+    {
+        index = 0;
+        dialogueEnded = false;
     }
 }

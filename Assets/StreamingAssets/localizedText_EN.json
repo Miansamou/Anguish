@@ -115,6 +115,14 @@
         {
             "key": "other_tutorial",
             "value": "Use SHIFT to run and SPACE to JUMP"
+        },
+        {
+            "key": "look_mirror",
+            "value": "Look mirror"
+        },
+        {
+            "key": "looking_mirror",
+            "value": "Annwn?"
         }
     ]
 }
