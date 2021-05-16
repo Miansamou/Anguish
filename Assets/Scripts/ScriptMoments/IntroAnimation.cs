@@ -15,10 +15,15 @@ public class IntroAnimation : MonoBehaviour
 
     private float speed;
     private DepthOfField bluring;
+    private AudioManager audioManager;
 
     // Start is called before the first frame update
     void Start()
     {
+        audioManager = FindObjectOfType<AudioManager>();
+        if(audioManager.getMusicIsPlaying())
+            StartCoroutine(audioManager.FadeOut(-0.02f));
+
         Invoke("PlayCamera", 5f);
 
         DepthOfField tempDof;

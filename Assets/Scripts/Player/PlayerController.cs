@@ -12,6 +12,7 @@ public class PlayerController : MonoBehaviour
     public InputActionAsset Controller;
     public float normalSpeed;
     public float sprintSpeed;
+    public GameObject interactText;
 
     private CharacterController characterController;
     private float cameraAngle;
@@ -23,20 +24,24 @@ public class PlayerController : MonoBehaviour
     private float gravity = -20f;
     private bool playerGrounded;
     private Interactable actualObjectInteract;
+    private PlayerItems inventory;
 
     // Inputs
     private InputAction jumpKey;
     private InputAction movementKey;
     private InputAction runKey;
     private InputAction interactKey;
+    private AudioManager audioManager;
 
     private void Awake()
     {
         characterController = GetComponent<CharacterController>();
+        inventory = GetComponent<PlayerItems>();
     }
 
     void Start()
     {
+        audioManager = FindObjectOfType<AudioManager>();
         InputActionMap Map = Controller.FindActionMap("PlayerInput");
 
         jumpKey = Map.FindAction("Jump");
@@ -87,6 +92,9 @@ public class PlayerController : MonoBehaviour
             case "interact":
                 interactKey.Enable();
                 break;
+            default:
+                Debug.Log("invalid key");
+                break;
         }
     }
 
@@ -105,6 +113,9 @@ public class PlayerController : MonoBehaviour
                 break;
             case "interact":
                 interactKey.Disable();
+                break;
+            default:
+                Debug.Log("invalid key");
                 break;
         }
     }
@@ -171,7 +182,13 @@ public class PlayerController : MonoBehaviour
 
             Vector3 moveDirection = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
             characterController.Move(moveDirection * Time.deltaTime * playerSpeed);
+
+            if (!audioManager.getAudioIsPlaying("BrickSteps"))
+                audioManager.Play("BrickSteps", true);
         }
+
+        if(!playerGrounded || moving.magnitude < 0.1f)
+            audioManager.StopSound("BrickSteps");
     }
 
     private void Interact()
@@ -198,14 +215,22 @@ public class PlayerController : MonoBehaviour
                     actualObjectInteract = interact;
                 }
 
+                inventory.ReceiveItemFromController(interact);
+
                 interact.Act(interactKey);
             }
             else
             {
-                if(actualObjectInteract != null)
+                if (actualObjectInteract != null)
                 {
                     actualObjectInteract.CancelAct();
                     actualObjectInteract = null;
+                }
+                else
+                {
+                    interactText.SetActive(false);
+                    inventory.HideConfirmationScreen();
+                    inventory.HideUseItemsScreen();
                 }
             }
         }

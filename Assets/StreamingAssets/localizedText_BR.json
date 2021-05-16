@@ -90,7 +90,7 @@
         },
         {
             "key": "ymir_intro_10",
-            "value": "Boa sorte, meu pequenino"
+            "value": "Boa sorte, meu pequenino..."
         },
         {
             "key": "open_cell",
@@ -119,6 +119,98 @@
         {
             "key": "looking_mirror",
             "value": "Annwn?"
+        },
+        {
+            "key": "myra_title",
+            "value": "Memórias da Myra"
+        },
+        {
+            "key": "unknownphrase_1",
+            "value": "Mas que frio..."
+        },
+        {
+            "key": "unknownphrase_2",
+            "value": "O que é aquilo na neve?"
+        },
+        {
+            "key": "ymirtalkmyra_1",
+            "value": "Pequenino, olhe ao redor"
+        },
+        {
+            "key": "ymirtalkmyra_2",
+            "value": "Encontre o cheiro da salvação, do dia que ela encontrou sua pureza e doçura"
+        },
+        {
+            "key": "ymirtalkmyra_3",
+            "value": "A cor da neve que se mistura ao frio do seu sangue no momento da morte"
+        },
+        {
+            "key": "ymirtalkmyra_4",
+            "value": "Leve esse cheiro para uma cabana, assim estará mais perto das respostas que precisa obter, pequenino."
+        },
+        {
+            "key": "loading",
+            "value": "Carregando..."
+        },
+        {
+            "key": "locked",
+            "value": "Trancado"
+        },
+        {
+            "key": "key",
+            "value": "Chave"
+        },
+        {
+            "key": "inventory_full",
+            "value": "O inventário está cheio"
+        },
+        {
+            "key": "take_item",
+            "value": "Pegar"
+        },
+        {
+            "key": "use_item",
+            "value": "Usar"
+        },
+        {
+            "key": "prison_flower",
+            "value": "Chave de cela"
+        },
+        {
+            "key": "flower",
+            "value": "Flor"
+        },
+        {
+            "key": "tent",
+            "value": "Cabana"
+        },
+        {
+            "key": "bring_flower",
+            "value": "Traga a flor..."
+        },
+        {
+            "key": "flower_carnation",
+            "value": "Cravo"
+        },
+        {
+            "key": "flower_gardenia",
+            "value": "Gardênia"
+        },
+        {
+            "key": "flower_winterberry",
+            "value": "Azevinho"
+        },
+        {
+            "key": "give",
+            "value": "Dar"
+        },
+        {
+            "key": "small_book",
+            "value": "Livro pequeno"
+        },
+        {
+            "key": "medicinal_book",
+            "value": "Livro medicinal"
         }
     ]
 }

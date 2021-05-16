@@ -17,6 +17,10 @@ public class LocalizedText : MonoBehaviour
     {
         text = GetComponent<TextMeshProUGUI>();
         newKey = key;
+    }
+
+    private void Start()
+    {
         UpdateText();
     }
 
@@ -43,5 +47,20 @@ public class LocalizedText : MonoBehaviour
         }
         text.text = LocalizationManager.instance.GetLocalizedValue(key);
         currentLanguage = PlayerPrefs.GetString("Language");
+    }
+
+    public void AddText(string textAdded)
+    {
+        text.text += " " + textAdded;
+    }
+
+    public string getTextKey()
+    {
+        return LocalizationManager.instance.GetLocalizedValue(key);
+    }
+
+    public static string getTextDeterminatedKey(string someKey)
+    {
+        return LocalizationManager.instance.GetLocalizedValue(someKey);
     }
 }

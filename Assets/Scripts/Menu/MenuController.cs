@@ -12,6 +12,7 @@ public class MenuController : MonoBehaviour
     public Camera cam;
     public GameObject YmirBox;
 
+    private AudioManager audioManager;
     private InputAction anyKey;
     private InputAction acceptKey;
     private Animator animator;
@@ -24,6 +25,9 @@ public class MenuController : MonoBehaviour
 
     private void Start()
     {
+        audioManager = FindObjectOfType<AudioManager>();
+        audioManager.Play("MenuMusic");
+
         InputActionMap Map = Controller.FindActionMap("UIController");
 
         IntroDialogue = YmirBox.GetComponentInChildren<DialogueLine>();
@@ -47,6 +51,7 @@ public class MenuController : MonoBehaviour
     {
         if (anyKey.triggered)
         {
+            audioManager.Play("DarkEntering");
             animator.SetTrigger("HomeMenu");
             anyKey.Disable();
         }
@@ -55,16 +60,19 @@ public class MenuController : MonoBehaviour
     public void PlayButton()
     {
         DontExitGame();
+        audioManager.Play("ClickButton");
         animator.SetTrigger("PlayButton");
     }
 
     public void QuitButton()
     {
+        audioManager.Play("ClickButton");
         ExitBox.SetBool("AppearBox", true);
     }
 
     public void DontExitGame()
     {
+        audioManager.Play("ClickButton");
         ExitBox.SetBool("AppearBox", false);
     }
 
@@ -75,6 +83,7 @@ public class MenuController : MonoBehaviour
 
     public void NewGame()
     {
+        audioManager.Play("ClickButton");
         fog.SetVector4("Color", new Vector4(1, 1, 0, 0));
         Invoke("ShowYmirDialogue", 5);
         
@@ -110,6 +119,7 @@ public class MenuController : MonoBehaviour
 
     public void BackButton()
     {
+        audioManager.Play("ClickButton");
         animator.SetTrigger("Back");
     }
 }

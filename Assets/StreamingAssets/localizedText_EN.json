@@ -53,10 +53,6 @@
             "value": "Back to Menu"
         },
         {
-            "key": "LoadScreen",
-            "value": "Loading"
-        },
-        {
             "key": "ymir_intro_1",
             "value": "Hello, little thing"
         },
@@ -94,7 +90,7 @@
         },
         {
             "key": "ymir_intro_10",
-            "value": "Good luck, my little thing"
+            "value": "Good luck, my little thing..."
         },
         {
             "key": "open_cell",
@@ -123,6 +119,98 @@
         {
             "key": "looking_mirror",
             "value": "Annwn?"
+        },
+        {
+            "key": "myra_title",
+            "value": "Myra's Memories"
+        },
+        {
+            "key": "unknownphrase_1",
+            "value": "So cold..."
+        },
+        {
+            "key": "unknownphrase_2",
+            "value": "What's that in the snow?"
+        },
+        {
+            "key": "ymirtalkmyra_1",
+            "value": "Little thing, look around"
+        },
+        {
+            "key": "ymirtalkmyra_2",
+            "value": "Find the scent of salvation, of the day she found your purity and sweetness"
+        },
+        {
+            "key": "ymirtalkmyra_3",
+            "value": "The color of snow that mixes with the cold of your blood at the moment of death"
+        },
+        {
+            "key": "ymirtalkmyra_4",
+            "value": "Take that scent to a tent, so you'll be closer to the answers you need to get, little thing."
+        },
+        {
+            "key": "loading",
+            "value": "Loading..."
+        },
+        {
+            "key": "locked",
+            "value": "Locked"
+        },
+        {
+            "key": "key",
+            "value": "Key"
+        },
+        {
+            "key": "inventory_full",
+            "value": "The inventory is full"
+        },
+        {
+            "key": "take_item",
+            "value": "Take"
+        },
+        {
+            "key": "use_item",
+            "value": "Use"
+        },
+        {
+            "key": "prison_flower",
+            "value": "Jail key"
+        },
+        {
+            "key": "flower",
+            "value": "Flower"
+        },
+        {
+            "key": "tent",
+            "value": "Tent"
+        },
+        {
+            "key": "bring_flower",
+            "value": "Bring the flower..."
+        },
+        {
+            "key": "flower_carnation",
+            "value": "Carnation"
+        },
+        {
+            "key": "flower_gardenia",
+            "value": "Gardenia"
+        },
+        {
+            "key": "flower_winterberry",
+            "value": "Winterberry"
+        },
+        {
+            "key": "give",
+            "value": "Give"
+        },
+        {
+            "key": "small_book",
+            "value": "Small book"
+        },
+        {
+            "key": "medicinal_book",
+            "value": "Medicinal book"
         }
     ]
 }
