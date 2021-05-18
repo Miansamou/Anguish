@@ -16,12 +16,7 @@ public class GameScenes : MonoBehaviour
             nextScene = 1;
             instance = this;
         }
-        else if(SceneManager.GetActiveScene().name != "LoadScreen")
-        {
-            Destroy(instance.gameObject);
-            instance = this;
-        }
-        else
+        else 
         {
             Destroy(gameObject);
         }

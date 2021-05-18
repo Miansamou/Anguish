@@ -53,6 +53,34 @@
             "value": "Voltar ao Menu"
         },
         {
+            "key": "save_btn",
+            "value": "Salvar"
+        },
+        {
+            "key": "audio_config",
+            "value": "Áudio"
+        },
+        {
+            "key": "language_config",
+            "value": "Idioma"
+        },
+        {
+            "key": "master_volume",
+            "value": "Geral"
+        },
+        {
+            "key": "ui_volume",
+            "value": "Interface"
+        },
+        {
+            "key": "sfx_volume",
+            "value": "Efeitos sonoros"
+        },
+        {
+            "key": "music_volume",
+            "value": "Música"
+        },
+        {
             "key": "ymir_intro_1",
             "value": "Olá, pequenino"
         },
@@ -211,6 +239,10 @@
         {
             "key": "medicinal_book",
             "value": "Livro medicinal"
+        },
+        {
+            "key": "back_to_menu",
+            "value": "Voltar ao menu?"
         }
     ]
 }

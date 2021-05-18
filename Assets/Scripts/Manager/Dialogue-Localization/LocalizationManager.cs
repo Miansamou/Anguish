@@ -57,13 +57,6 @@ public class LocalizationManager : MonoBehaviour
     {
         LocalizedText[] texts = FindObjectsOfType<LocalizedText>();
 
-        if (PlayerPrefs.GetString("Language") == "localizedText_BR.json")
-        {
-            PlayerPrefs.SetString("Language", "localizedText_EN.json");
-        }
-        else
-            PlayerPrefs.SetString("Language", "localizedText_BR.json");
-
         LoadLocalizedText(PlayerPrefs.GetString("Language"));
 
         for(int i = 0; i < texts.Length; i++)

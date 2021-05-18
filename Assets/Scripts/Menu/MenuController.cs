@@ -64,6 +64,13 @@ public class MenuController : MonoBehaviour
         animator.SetTrigger("PlayButton");
     }
 
+    public void ConfigurationsButton()
+    {
+        DontExitGame();
+        audioManager.Play("ClickButton");
+        animator.SetTrigger("ConfigurationsButton");
+    }
+
     public void QuitButton()
     {
         audioManager.Play("ClickButton");

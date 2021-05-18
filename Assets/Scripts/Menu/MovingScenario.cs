@@ -12,9 +12,9 @@ public class MovingScenario : MonoBehaviour
     {
         transform.position = Vector3.MoveTowards(transform.position, target, Time.deltaTime * speed);
 
-        if (this.transform.position.z <= -70)
+        if (this.transform.position.z <= -69.95979)
         {
-            transform.position = new Vector3(this.transform.position.x, this.transform.position.z, 297.5681f);
+            transform.position = new Vector3(this.transform.position.x, 0, 270.11783f);
         }
     }
 }

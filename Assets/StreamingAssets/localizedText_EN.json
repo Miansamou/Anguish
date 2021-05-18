@@ -53,6 +53,34 @@
             "value": "Back to Menu"
         },
         {
+            "key": "save_btn",
+            "value": "Save"
+        },
+        {
+            "key": "audio_config",
+            "value": "Audio"
+        },
+        {
+            "key": "language_config",
+            "value": "Language"
+        },
+        {
+            "key": "master_volume",
+            "value": "Master"
+        },
+        {
+            "key": "ui_volume",
+            "value": "Interface"
+        },
+        {
+            "key": "sfx_volume",
+            "value": "Sound Effects"
+        },
+        {
+            "key": "music_volume",
+            "value": "Music"
+        },
+        {
             "key": "ymir_intro_1",
             "value": "Hello, little thing"
         },
@@ -211,6 +239,10 @@
         {
             "key": "medicinal_book",
             "value": "Medicinal book"
+        },
+        {
+            "key": "back_to_menu",
+            "value": "Back to menu?"
         }
     ]
 }

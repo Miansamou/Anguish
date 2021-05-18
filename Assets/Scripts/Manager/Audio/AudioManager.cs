@@ -46,19 +46,19 @@ public class AudioManager : MonoBehaviour
 
         SoundsPlaying = new Dictionary<string, AudioSource>();
 
-        InitializeAudioSources(musics);
-        InitializeAudioSources(sfx);
-        InitializeAudioSources(ui);
-        InitializeAudioSources(voices);
+        InitializeAudioSources(musics, musicGroup);
+        InitializeAudioSources(sfx, sfxGroup);
+        InitializeAudioSources(ui, uiGroup);
+        InitializeAudioSources(voices, voicesGroup);
     }
 
-    private void InitializeAudioSources(Sound[] sounds)
+    private void InitializeAudioSources(Sound[] sounds, AudioMixerGroup groupMixer)
     {
         foreach (Sound s in sounds)
         {
             s.source = gameObject.AddComponent<AudioSource>();
             s.source.clip = s.clip;
-            s.source.outputAudioMixerGroup = sfxGroup;
+            s.source.outputAudioMixerGroup = groupMixer;
 
             s.source.volume = s.volume;
             s.source.pitch = s.pitch;

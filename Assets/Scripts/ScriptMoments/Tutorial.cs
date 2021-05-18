@@ -33,6 +33,8 @@ public class Tutorial : MonoBehaviour
         player.EnableKey("movement");
         tutorialBox.SetTrigger("Enter");
         movementText.SetActive(true);
+        player.EnableKey("esc");
+        player.EnableKey("tab");
     }
 
     // Update is called once per frame

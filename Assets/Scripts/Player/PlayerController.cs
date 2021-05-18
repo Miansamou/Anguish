@@ -13,6 +13,7 @@ public class PlayerController : MonoBehaviour
     public float normalSpeed;
     public float sprintSpeed;
     public GameObject interactText;
+    public GameObject GeneralMenu;
 
     private CharacterController characterController;
     private float cameraAngle;
@@ -31,6 +32,9 @@ public class PlayerController : MonoBehaviour
     private InputAction movementKey;
     private InputAction runKey;
     private InputAction interactKey;
+    private InputAction escKey;
+    private InputAction tabKey;
+
     private AudioManager audioManager;
 
     private void Awake()
@@ -43,11 +47,14 @@ public class PlayerController : MonoBehaviour
     {
         audioManager = FindObjectOfType<AudioManager>();
         InputActionMap Map = Controller.FindActionMap("PlayerInput");
+        InputActionMap MapUi = Controller.FindActionMap("UIController");
 
         jumpKey = Map.FindAction("Jump");
         movementKey = Map.FindAction("Movement");
         runKey = Map.FindAction("Run");
         interactKey = Map.FindAction("Interact");
+        escKey = MapUi.FindAction("Esc");
+        tabKey = MapUi.FindAction("Tab");
 
     }
 
@@ -66,6 +73,8 @@ public class PlayerController : MonoBehaviour
         EnableKey("movement");
         EnableKey("run");
         EnableKey("interact");
+        EnableKey("esc");
+        EnableKey("tab");
     }
 
     public void DisableControls()
@@ -74,6 +83,8 @@ public class PlayerController : MonoBehaviour
         DisableKey("movement");
         DisableKey("run");
         DisableKey("interact");
+        DisableKey("esc");
+        DisableKey("tab");
     }
 
     public void EnableKey(string key)
@@ -91,6 +102,12 @@ public class PlayerController : MonoBehaviour
                 break;
             case "interact":
                 interactKey.Enable();
+                break;
+            case "esc":
+                escKey.Enable();
+                break;
+            case "tab":
+                tabKey.Enable();
                 break;
             default:
                 Debug.Log("invalid key");
@@ -114,6 +131,12 @@ public class PlayerController : MonoBehaviour
             case "interact":
                 interactKey.Disable();
                 break;
+            case "esc":
+                escKey.Disable();
+                break;
+            case "tab":
+                tabKey.Disable();
+                break;
             default:
                 Debug.Log("invalid key");
                 break;
@@ -127,6 +150,33 @@ public class PlayerController : MonoBehaviour
         Move();
 
         Interact();
+
+        ShowMenus();
+    }
+
+    private void ShowMenus()
+    {
+        if (escKey.triggered)
+        {
+            if (GeneralMenu.activeInHierarchy)
+            {
+                GeneralMenu.SetActive(false);
+            }
+            else
+                GeneralMenu.SetActive(true);
+        }
+
+        if (tabKey.triggered)
+        {
+            Debug.Log("Show Player Menu");
+        }
+
+        if (GeneralMenu.activeInHierarchy)
+        {
+            Time.timeScale = 0;
+        }
+        else
+            Time.timeScale = 1;
     }
 
     private void Jump()
