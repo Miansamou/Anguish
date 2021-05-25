@@ -1,5 +1,4 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -14,21 +13,22 @@ public class PlayerController : MonoBehaviour
     public float sprintSpeed;
     public GameObject interactText;
     public GameObject GeneralMenu;
+    public PlayerMenu PlayerMenu;
 
     private CharacterController characterController;
     private float cameraAngle;
     private Vector2 previousMovement;
-    private Vector3 playerVelocity;
+    //private Vector3 playerVelocity;
     private float playerSpeed;
     private float turnSmoothTime = 0.1f;
     private float turnSmoothVelocity;
-    private float gravity = -20f;
+    //private float gravity = -20f;
     private bool playerGrounded;
     private Interactable actualObjectInteract;
     private PlayerItems inventory;
 
     // Inputs
-    private InputAction jumpKey;
+    //private InputAction jumpKey;
     private InputAction movementKey;
     private InputAction runKey;
     private InputAction interactKey;
@@ -49,7 +49,7 @@ public class PlayerController : MonoBehaviour
         InputActionMap Map = Controller.FindActionMap("PlayerInput");
         InputActionMap MapUi = Controller.FindActionMap("UIController");
 
-        jumpKey = Map.FindAction("Jump");
+        //jumpKey = Map.FindAction("Jump");
         movementKey = Map.FindAction("Movement");
         runKey = Map.FindAction("Run");
         interactKey = Map.FindAction("Interact");
@@ -69,7 +69,7 @@ public class PlayerController : MonoBehaviour
 
     public void EnableControls()
     {
-        EnableKey("jump");
+        //EnableKey("jump");
         EnableKey("movement");
         EnableKey("run");
         EnableKey("interact");
@@ -79,9 +79,9 @@ public class PlayerController : MonoBehaviour
 
     public void DisableControls()
     {
-        DisableKey("jump");
+        //DisableKey("jump");
         DisableKey("movement");
-        DisableKey("run");
+        EnableKey("run");
         DisableKey("interact");
         DisableKey("esc");
         DisableKey("tab");
@@ -92,7 +92,7 @@ public class PlayerController : MonoBehaviour
         switch (key)
         {
             case "jump":
-                jumpKey.Enable();
+                //jumpKey.Enable();
                 break;
             case "movement":
                 movementKey.Enable();
@@ -120,7 +120,7 @@ public class PlayerController : MonoBehaviour
         switch (key)
         {
             case "jump":
-                jumpKey.Disable();
+                //jumpKey.Disable();
                 break;
             case "movement":
                 movementKey.Disable();
@@ -145,7 +145,7 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        Jump();
+        //Jump();
 
         Move();
 
@@ -160,26 +160,49 @@ public class PlayerController : MonoBehaviour
         {
             if (GeneralMenu.activeInHierarchy)
             {
+                EnableKey("tab");
+                EnableKey("movement");
+                EnableKey("run");
                 GeneralMenu.SetActive(false);
             }
             else
+            {
+                DisableKey("tab");
+                //EnableKey("jump");
                 GeneralMenu.SetActive(true);
+            }
         }
-
+        
         if (tabKey.triggered)
         {
-            Debug.Log("Show Player Menu");
+            if (PlayerMenu.gameObject.activeInHierarchy)
+            {
+                EnableKey("esc");
+                EnableKey("movement");
+                EnableKey("run");
+                PlayerMenu.gameObject.SetActive(false);
+                PlayerMenu.ItemButton();
+            }
+            else
+            {
+                DisableKey("esc");
+                //EnableKey("jump");
+                PlayerMenu.gameObject.SetActive(true);
+            }
         }
 
-        if (GeneralMenu.activeInHierarchy)
+        if (GeneralMenu.activeInHierarchy || PlayerMenu.gameObject.activeInHierarchy)
         {
+            //DisableKey("jump");
+            DisableKey("movement");
+            DisableKey("run");
             Time.timeScale = 0;
         }
         else
             Time.timeScale = 1;
     }
 
-    private void Jump()
+    /*private void Jump()
     {
         playerGrounded = Physics.Raycast(transform.position, Vector3.down, DistToGround);
 
@@ -200,7 +223,7 @@ public class PlayerController : MonoBehaviour
             playerVelocity.y += (gravity * Time.deltaTime);
         }
         characterController.Move(Time.deltaTime * playerVelocity);
-    }
+    }*/
 
     private void Move()
     {
@@ -258,16 +281,16 @@ public class PlayerController : MonoBehaviour
                 if(actualObjectInteract == null)
                 {
                     actualObjectInteract = interact;
+                    inventory.ReceiveItemFromController(interact);
                 }
-                else
+                else if(interact != actualObjectInteract)
                 {
                     actualObjectInteract.CancelAct();
                     actualObjectInteract = interact;
+                    inventory.ReceiveItemFromController(interact);
                 }
-
-                inventory.ReceiveItemFromController(interact);
-
-                interact.Act(interactKey);
+                
+                interact.Act();
             }
             else
             {

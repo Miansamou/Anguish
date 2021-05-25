@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 441021bbdf2217e48885b6066912195d, type: 3}
   m_Name: Winterberry
   m_EditorClassIdentifier: 
-  prefab: {fileID: 0}
+  image: {fileID: 21300000, guid: 6a2d455f4f8db5645a9e3e65a45445db, type: 3}
   type: 0
   nameItem: flower_winterberry

@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b9c0f4ae962c7f5468eccafdb05593b6, type: 3}
   m_Name: Prison_Flower
   m_EditorClassIdentifier: 
-  prefab: {fileID: 0}
+  image: {fileID: 21300000, guid: 42fc8bbb9632fe94b903d2e27e64342f, type: 3}
   type: 0
   nameItem: prison_flower

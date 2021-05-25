@@ -24,14 +24,16 @@ public class YmirTalkMyra : MonoBehaviour
     {
         if (dialogue.activeInHierarchy)
         {
-            if (player.getInteractTrigger())
-                dialogueBox.Play();
-
-            if (dialogueBox.getDialogueEnded())
+            if (!dialogueBox.getDialogueEnded())
+            {
+                if (player.getInteractTrigger() && dialogueBox.getEndLine())
+                    dialogueBox.Play();
+            }
+            else
             {
                 dialogue.gameObject.SetActive(false);
                 cam.SetActive(false);
-                Invoke("EnableControl", 2f);
+                Invoke("EnableControl", 0.5f);
             }
         }
     }
@@ -39,10 +41,8 @@ public class YmirTalkMyra : MonoBehaviour
     private void ActiveCamera()
     {
         cam.SetActive(true);
-
-        player.DisableKey("jump");
-        player.DisableKey("movement");
-        player.DisableKey("run");
+        player.DisableControls();
+        player.EnableKey("interact");
 
         Invoke("ActiveDialogue", 1.5f);
     }

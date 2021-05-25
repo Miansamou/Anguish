@@ -15,6 +15,7 @@ public class ConfigurationsMenu : MonoBehaviour
 
     public TMP_Dropdown Language;
     public TMP_Dropdown resolutionDropdown;
+    public Toggle fullScreen;
 
     public GameObject[] settings;
     private int page;
@@ -77,6 +78,36 @@ public class ConfigurationsMenu : MonoBehaviour
         UpdateSlider("MasterVolume", (int)PlayerPrefs.GetFloat("MasterVolume"));
     }
 
+    public void UpdateToggle()
+    {
+        if (!PlayerPrefs.HasKey("FullScreen"))
+        {
+            PlayerPrefs.SetString("FullScreen", "true");
+            Screen.fullScreen = true;
+        }
+
+        if(PlayerPrefs.GetString("FullScreen") == "true")
+        {
+            Screen.fullScreen = true;
+            fullScreen.isOn = true;
+        }
+        else
+        {
+            Screen.fullScreen = false;
+            fullScreen.isOn = false;
+        }
+    }
+
+    public void UpdateFullScreen()
+    {
+        if (fullScreen.isOn)
+        {
+            PlayerPrefs.SetString("FullScreen", "true");
+        }
+        else
+            PlayerPrefs.SetString("FullScreen", "false");
+    }
+
     public void UpdateLocalizationPref()
     {
         if (Language.value == 0)
@@ -110,6 +141,7 @@ public class ConfigurationsMenu : MonoBehaviour
                 MusicSound.value = PlayerPrefs.GetFloat("MusicVolume");
 
                 UpdateLocalizationDropdown();
+                UpdateToggle();
 
                 page = 0;
                 foreach (GameObject setting in settings)
@@ -253,8 +285,6 @@ public class ConfigurationsMenu : MonoBehaviour
 
     public void SaveSettings()
     {
-        Debug.Log("Salvo");
-
         PlayerPrefs.SetFloat("MasterVolume", MasterSound.value);
         PlayerPrefs.SetFloat("UIVolume", UISound.value);
         PlayerPrefs.SetFloat("SFXVolume", SFXSound.value);
@@ -264,5 +294,8 @@ public class ConfigurationsMenu : MonoBehaviour
         LocalizationManager.instance.ChangeLanguage();
 
         SetResolution(resolutionDropdown.value);
+
+        UpdateFullScreen();
+        UpdateToggle();
     }
 }

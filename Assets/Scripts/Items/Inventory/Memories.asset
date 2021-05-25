@@ -13,3 +13,5 @@ MonoBehaviour:
   m_Name: Memories
   m_EditorClassIdentifier: 
   inventory: []
+  hasLimit: 0
+  limit: 0

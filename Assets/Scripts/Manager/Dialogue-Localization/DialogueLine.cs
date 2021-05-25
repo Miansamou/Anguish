@@ -6,7 +6,8 @@ using TMPro;
 public class DialogueLine : DialogueBaseClass
 {
     [Header("Text Options")]
-    public string[] key;
+    public List<string> key;
+    private List<string> backupKey = new List<string>();
     public Color TextColor;
     private int index;
     private bool dialogueEnded;
@@ -22,14 +23,16 @@ public class DialogueLine : DialogueBaseClass
 
     private void Awake()
     {
-        resetDialogue();
+        foreach (string auxKey in key)
+        {
+            backupKey.Add(auxKey);
+        }
     }
 
     public void Play()
     {
         textHolder = GetComponent<TextMeshProUGUI>();
-
-        if (index < key.Length)
+        if (index < key.Count)
         {
             input = LocalizationManager.instance.GetLocalizedValue(key[index]);
             StartCoroutine(WriteText(input, textHolder, TextColor, Delay, PlayableSound));
@@ -38,6 +41,25 @@ public class DialogueLine : DialogueBaseClass
             dialogueEnded = true;
 
         index++;
+    }
+
+    public void ClearText()
+    {
+        key.Clear();
+    }
+
+    public void AddKey(string newText)
+    {
+        key.Add(newText);
+    }
+
+    public void ResetDefault()
+    {
+        ClearText();
+        foreach (string auxKey in backupKey)
+        {
+            key.Add(auxKey);
+        }
     }
 
     public bool getDialogueEnded()

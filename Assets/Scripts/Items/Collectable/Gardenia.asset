@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 441021bbdf2217e48885b6066912195d, type: 3}
   m_Name: Gardenia
   m_EditorClassIdentifier: 
-  prefab: {fileID: 0}
+  image: {fileID: 21300000, guid: 41d093c752cf2214cbebd89333b3595c, type: 3}
   type: 0
   nameItem: flower_gardenia

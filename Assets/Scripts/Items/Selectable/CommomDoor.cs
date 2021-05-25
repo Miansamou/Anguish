@@ -1,7 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.InputSystem;
+﻿using UnityEngine;
 
 public class CommomDoor : Interactable
 {
@@ -10,7 +7,7 @@ public class CommomDoor : Interactable
     public string key;
     public string animationName;
     public bool locked;
-    public InventorySlot keyToOpen;
+    public ItemObject keyToOpen;
     public PlayerItems inventory;
 
     private LocalizedText localized;
@@ -22,15 +19,15 @@ public class CommomDoor : Interactable
         animator = GetComponent<Animator>();
     }
 
-    public override void Act(InputAction input)
+    public override void Act()
     {
 
         LocalizedText localization = textMessage.GetComponent<LocalizedText>();
-        localization.setNewKey(key);
+        localization.SetNewKey(key);
 
         textMessage.SetActive(true);
 
-        if (input.triggered)
+        if (player.getInteractTrigger())
         {
             Acting();
         }
@@ -40,14 +37,14 @@ public class CommomDoor : Interactable
     {
         if (locked)
         {
-            if (inventory.FindItemInInventory(keyToOpen.item.nameItem))
+            if (inventory.FindItemInInventory(keyToOpen.nameItem))
             {
-                inventory.ShowUseItemsScreen(LocalizedText.getTextDeterminatedKey(keyToOpen.item.nameItem));
+                inventory.ShowUseItemsScreen(LocalizedText.GetTextDeterminatedKey(keyToOpen.nameItem));
                 return;
             }
             
             localized = lockedMessage.gameObject.GetComponentInChildren<LocalizedText>();
-            localized.setNewKey("locked");
+            localized.SetNewKey("locked");
             localized.UpdateText();
             lockedMessage.SetTrigger("ShowBox");
             return;

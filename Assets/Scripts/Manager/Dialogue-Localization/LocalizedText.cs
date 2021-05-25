@@ -1,30 +1,31 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.UI;
+﻿using UnityEngine;
 using TMPro;
 
 public class LocalizedText : MonoBehaviour
 {
-    TextMeshProUGUI text;
-    public string key;
-    private string currentLanguage;
+    [SerializeField]
+    private string key;
+    public bool updateTextByKey;
 
+    private TextMeshProUGUI text;
+    private string currentLanguage;
     private string newKey;
 
     // Start is called before the first frame update
     void Awake()
     {
         text = GetComponent<TextMeshProUGUI>();
-        newKey = key;
     }
 
     private void Start()
     {
         UpdateText();
+
+        if (string.IsNullOrEmpty(newKey))
+            newKey = key;
     }
 
-    public void setNewKey(string keyReceived)
+    public void SetNewKey(string keyReceived)
     {
         newKey = keyReceived;
     }
@@ -32,19 +33,23 @@ public class LocalizedText : MonoBehaviour
     // When language is changed and this object is activated, this will update the text to the new language
     private void OnEnable()
     {
-        if(currentLanguage != PlayerPrefs.GetString("Language") && !string.IsNullOrEmpty(currentLanguage) ||
-            key != newKey)
+        if(currentLanguage != PlayerPrefs.GetString("Language") && !string.IsNullOrEmpty(currentLanguage))
         {
             UpdateText();
         }
     }
-    
-    public void UpdateText()
+
+    private void Update()
     {
-        if(key != newKey)
+        if (key != newKey && updateTextByKey)
         {
             key = newKey;
+            UpdateText();
         }
+    }
+
+    public void UpdateText()
+    {
         text.text = LocalizationManager.instance.GetLocalizedValue(key);
         currentLanguage = PlayerPrefs.GetString("Language");
     }
@@ -54,12 +59,12 @@ public class LocalizedText : MonoBehaviour
         text.text += " " + textAdded;
     }
 
-    public string getTextKey()
+    public string GetTextKey()
     {
         return LocalizationManager.instance.GetLocalizedValue(key);
     }
 
-    public static string getTextDeterminatedKey(string someKey)
+    public static string GetTextDeterminatedKey(string someKey)
     {
         return LocalizationManager.instance.GetLocalizedValue(someKey);
     }

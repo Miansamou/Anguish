@@ -1,15 +1,14 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class MirrorMoment : MonoBehaviour
 {
-
     public DialogueLine dialogue;
     public PlayerController player;
 
     private void OnEnable()
     {
+        player.DisableControls();
+        player.EnableKey("interact");
         dialogue.resetDialogue();
         dialogue.Play();
     }
@@ -18,11 +17,13 @@ public class MirrorMoment : MonoBehaviour
     void Update()
     {
         if (player.getInteractTrigger())
+        {
+            player.EnableControls();
             dialogue.Play();
+        }
 
         if (dialogue.getDialogueEnded())
         {
-            player.EnableControls();
             gameObject.SetActive(false);
         }
     }

@@ -6,20 +6,20 @@ public class EntryDoor : MonoBehaviour
 {
     public List<GameObject> ActiveObjects;
     public string locale;
-    public PlayerStatus status;
     public Animator TitleArea;
+
+    private void Start()
+    {
+        SetObjectsActive(false);
+    }
 
     private void OnTriggerEnter(Collider other)
     {
         if(other.tag == "Player")
         {
-            foreach(GameObject obj in ActiveObjects)
-            {
-                obj.SetActive(true);
-            }
+            SetObjectsActive(true);
 
             TitleArea.SetTrigger("EntryTitle");
-            status.setLocation(locale);
         }
     }
 
@@ -27,10 +27,15 @@ public class EntryDoor : MonoBehaviour
     {
         if (other.tag == "Player")
         {
-            foreach (GameObject obj in ActiveObjects)
-            {
-                obj.SetActive(false);
-            }
+            SetObjectsActive(false);
+        }
+    }
+
+    private void SetObjectsActive(bool activation)
+    {
+        foreach (GameObject obj in ActiveObjects)
+        {
+            obj.SetActive(activation);
         }
     }
 }

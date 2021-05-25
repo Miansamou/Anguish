@@ -1,7 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.InputSystem;
 
 public class CollectableItem : Interactable
 {
@@ -11,15 +8,16 @@ public class CollectableItem : Interactable
     public PlayerItems inventory;
     private string nameItem;
 
-    public override void Act(InputAction input)
+    public override void Act()
     {
         LocalizedText localization = textMessage.GetComponent<LocalizedText>();
-        localization.setNewKey(key);
-        nameItem = localization.getTextKey();
+        localization.SetNewKey(key);
+
+        nameItem = localization.GetTextKey();
 
         textMessage.SetActive(true);
 
-        if (input.triggered)
+        if (player.getInteractTrigger())
         {
             Acting();
         }

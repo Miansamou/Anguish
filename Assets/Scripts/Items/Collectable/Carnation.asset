@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 441021bbdf2217e48885b6066912195d, type: 3}
   m_Name: Carnation
   m_EditorClassIdentifier: 
-  prefab: {fileID: 0}
+  image: {fileID: 21300000, guid: a250336022ec9854096cf90e5219f7d8, type: 3}
   type: 0
   nameItem: flower_carnation

@@ -91,7 +91,7 @@ public class MenuController : MonoBehaviour
     public void NewGame()
     {
         audioManager.Play("ClickButton");
-        fog.SetVector4("Color", new Vector4(1, 1, 0, 0));
+        //fog.SetVector4("Color", new Vector4(0.5f, 0.5f, 0.5f, 1f));
         Invoke("ShowYmirDialogue", 5);
         
         animator.SetTrigger("NewGame");

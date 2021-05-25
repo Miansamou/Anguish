@@ -1,13 +1,16 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.InputSystem;
+﻿using UnityEngine;
 
 public abstract class Interactable : MonoBehaviour
 {
     protected bool objHover;
+    protected PlayerController player;
 
-    public abstract void Act(InputAction input);
+    private void Start()
+    {
+        player = FindObjectOfType<PlayerController>();
+    }
+
+    public abstract void Act();
 
     public abstract void Acting();
 

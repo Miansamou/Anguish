@@ -4,10 +4,15 @@ using UnityEngine;
 
 public class PlayerItems : MonoBehaviour
 {
-    public InventoryObject itemsForUse;
-    public InventoryObject documents;
-    public InventoryObject memories;
+    [Header("Inventories")]
+    [SerializeField]
+    private InventoryObject itemsForUse;
+    [SerializeField]
+    private InventoryObject documents;
+    [SerializeField]
+    private InventoryObject memories;
 
+    [Header("Messages")]
     public GameObject ConfirmationGetItems;
     public GameObject ConfirmationUseItems;
     public GameObject PoPUpMessage;
@@ -103,12 +108,17 @@ public class PlayerItems : MonoBehaviour
     {
         if (itemsForUse.isFull())
         {
-            localizedPopUp.setNewKey("inventory_full");
+            localizedPopUp.SetNewKey("inventory_full");
             animPoPUp.SetTrigger("ShowBox");
             return false;
         }
         itemsForUse.AddItem(item);
         return true;
+    }
+
+    public void RemoveItem(ItemObject item)
+    {
+        itemsForUse.Remove(item);
     }
 
     public bool AddDocument(ItemObject item)
@@ -121,6 +131,21 @@ public class PlayerItems : MonoBehaviour
     {
         memories.AddItem(item);
         return true;
+    }
+
+    public InventoryObject getItems()
+    {
+        return itemsForUse;
+    }
+
+    public InventoryObject getDocuments()
+    {
+        return documents;
+    }
+
+    public InventoryObject getMemories()
+    {
+        return memories;
     }
 
     private void OnApplicationQuit()

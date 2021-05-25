@@ -65,6 +65,10 @@
             "value": "Idioma"
         },
         {
+            "key": "screen_config",
+            "value": "Tela"
+        },
+        {
             "key": "master_volume",
             "value": "Geral"
         },
@@ -138,7 +142,7 @@
         },
         {
             "key": "other_tutorial",
-            "value": "Use SHIFT para correr e BARRA DE ESPAÇO para pular"
+            "value": "Use SHIFT para correr e TAB para accessar o inventário"
         },
         {
             "key": "look_mirror",
@@ -201,6 +205,10 @@
             "value": "Usar"
         },
         {
+            "key": "remove_item",
+            "value": "Remover"
+        },
+        {
             "key": "prison_flower",
             "value": "Chave de cela"
         },
@@ -243,6 +251,134 @@
         {
             "key": "back_to_menu",
             "value": "Voltar ao menu?"
+        },
+        {
+            "key": "winterberry_description",
+            "value": "Ilex é uma espécie de flor sagrada e é originária do norte de Gahats, usada para fins medicinais. A planta perde todas as folhas no inverno, só restam os frutos típicos que são ligeiramente tóxicas para os Huneros. As folhas de Ilex simbolizam o amor e a esperança, durante séculos, ela foi a portadora de sorte. Os Huneros adoravam a árvore e a usavam para manter as bruxas (e outros males) afastados. Você nunca deve cortar uma árvore ou galho de Ilex porque isso traz azar."
+        },
+        {
+            "key": "gardenia_description",
+            "value": "A Gardênia é uma planta muito usada para demonstrar sentimentos. Ela está associada à inocência, à sinceridade e à doçura, ou seja a sentimentos puros. E além das suas propriedades medicinais ela é muito reconhecida pelo seu perfume, recebendo homenagem com músicas pelos Huneros."
+        },
+        {
+            "key": "carnation_description",
+            "value": "O cravo é uma flor que deve ser cultivada em solo quente, adubado e não muito úmido. A flor cravo representa a boa sorte, ou seja, o dom de atrair bênçãos e vitórias. O seu perfume envolvente e sedutor e suas cores vibrantes alegram e aquecem o coração tanto de quem dá um cravo de presente, como de quem recebe também."
+        },
+        {
+            "key": "other_flower",
+            "value": "Não, traga outra flor..."
+        },
+        {
+            "key": "wrong_flower_1",
+            "value": "NÃO!! O QUE VOCÊ FEZ!"
+        },
+        {
+            "key": "wrong_flower_2",
+            "value": "COMO OUSOU CORTAR A RAMA SAGRADA?!"
+        },
+        {
+            "key": "wrong_flower_3",
+            "value": "Saia daqui e jamais volte, aberração!"
+        },
+        {
+            "key": "correct_flower_1",
+            "value": "Mas.. que frio.."
+        },
+        {
+            "key": "correct_flower_2",
+            "value": "Aquilo.. o que é aquilo na neve?"
+        },
+        {
+            "key": "correct_flower_3",
+            "value": "Uma flor ensanguentada?"
+        },
+        {
+            "key": "correct_flower_4",
+            "value": "Não é um bom sinal, de onde vem esse sangue..."
+        },
+        {
+            "key": "correct_flower_5",
+            "value": "MEU DEUS! É um dragão? Está a beira da morte"
+        },
+        {
+            "key": "correct_flower_6",
+            "value": "Preciso levar ele direto para a minha cabana, ainda há tempo para salvá-lo."
+        },
+        {
+            "key": "receive_flower_memory",
+            "value": "Você recebeu a memória da flor."
+        },
+        {
+            "key": "flower_memory_name",
+            "value": "Memória da flor"
+        },
+        {
+            "key": "flower_memory",
+            "value": "A criatura se lembra do momento em que um dragão completamente ferido deixa rastros de sangue na neve, até ser encontrado por uma  Hunera que decide levá-lo para sua cabana afim de cuidar dos seus ferimentos. Seria ele o dragão?!"
+        },
+        {
+            "key": "need_remedy_1",
+            "value": "Rápido, preciso fazer um remédio"
+        },
+        {
+            "key": "need_remedy_2",
+            "value": "Ai ai, onde ta o meu jarro, preciso de seiva também"
+        },
+        {
+            "key": "pedestal",
+            "value": "Pedestal"
+        },
+        {
+            "key": "ymir_explanation_1",
+            "value": "Vejo que encontrou este pedestal, pequenino."
+        },
+        {
+            "key": "ymir_explanation_2",
+            "value": "Ele pode ser a sua saída deste lugar a qualquer momento"
+        },
+        {
+            "key": "ymir_explanation_3",
+            "value": "Aqui você pode depositar suas memórias e seguir uma nova fase em sua vida."
+        },
+        {
+            "key": "ymir_explanation_4",
+            "value": "Mas esteja certo de todas as suas decisões, e o rumo que busca seguir daqui para frente."
+        },
+        {
+            "key": "offered_memories",
+            "value": "Memórias oferecidas"
+        },
+        {
+            "key": "player_memories",
+            "value": "Memórias disponíveis"
+        },
+        {
+            "key": "final_0_0",
+            "value": "A pequena criatura saiu do local, mas sem coragem de levar consigo nenhuma das memórias do seu passado, não se sabe se fora por medo ou pela vontade de iniciar uma nova vida completamente do zero, o que se sabe é que ela saiu do pesadelo que a assombrava há muito tempo, a agonia miserável cercada pela curiosa masmorra que enfrentara a cada noite enfim cessaria."
+        },
+        {
+            "key": "final_0_1",
+            "value": "Tudo isso graças às bênçãos de Ymir, mas ao levar nenhuma memória para fora da masmorra, foi-se consigo sua consciência, e assim durante todo o restante de sua vida, a jovem criatura foi criada como um mero animal doméstico, cercada por sentimentos amorosos de uma Hunera da região."
+        },
+        {
+            "key": "final_0_2",
+            "value": "A criatura viveu por cerca de dez anos no recanto doméstico, falecendo aparentemente por causas naturais, mas com uma vida sem arrependimentos."
+        },
+        {
+            "key": "final_1_0",
+            "value": "“A lembrança do doce cheiro da primavera, que leva consigo a esperança capaz de confortar os corações dos mais necessitados, siga ela, meu pequenino, siga a pura Gardênia que repousa em seu coração, e agora desperta a essência do seu ser outrora desvanecido”. Essas foram as últimas frases escutadas pela criatura, antes de acordar do seu sono quase interminável, sem dúvidas era um recado de Ymir para que a criatura continuasse seguindo em frente sem deixar de ser quem sempre foi."
+        },
+        {
+            "key": "final_1_1",
+            "value": "Ao acordar do sono profundo, ele se viu em uma cabana, seu corpo estava totalmente ferido e ele estava sendo cuidado por uma Hunera, inicialmente sentiu medo e desconforto, mas com o tempo esse tom arisco se transformou em uma profunda amizade, na qual junto dela ele sentia uma que estaria protegido, da mesma forma que ele podia confortar o coração dela com uma pureza própria."
+        },
+        {
+            "key": "final_1_2",
+            "value": "A criatura viveu por cerca de onze anos como um amigo no lar da Hunera, falecendo aparentemente por causas naturais, mas com uma vida sem arrependimentos."
+        },
+        {
+            "key": "null",
+            "value": ""
         }
     ]
 }

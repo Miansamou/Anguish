@@ -82,7 +82,7 @@ public class AudioManager : MonoBehaviour
         }
         catch
         {
-            Debug.Log(name + " not found in sfx");
+            //Debug.Log(name + " not found in sfx");
         }
 
         try
@@ -93,7 +93,7 @@ public class AudioManager : MonoBehaviour
         }
         catch
         {
-            Debug.Log(name + " not found in ui");
+            //Debug.Log(name + " not found in ui");
         }
 
         try
@@ -104,7 +104,7 @@ public class AudioManager : MonoBehaviour
         }
         catch
         {
-            Debug.Log(name + " not found in voices");
+            //Debug.Log(name + " not found in voices");
         }
 
         if(saveAudio)
@@ -123,7 +123,7 @@ public class AudioManager : MonoBehaviour
         }
         catch
         {
-            Debug.Log(name + " not found in musics");
+            //Debug.Log(name + " not found in musics");
         }
     }
 
@@ -166,7 +166,6 @@ public class AudioManager : MonoBehaviour
         if (source == null)
             return;
         SoundsPlaying.Add(name, source);
-        Debug.Log("Salvo");
     }
 
     private void RemoveSoundsNotPlaying()

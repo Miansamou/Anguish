@@ -65,6 +65,10 @@
             "value": "Language"
         },
         {
+            "key": "screen_config",
+            "value": "Screen"
+        },
+        {
             "key": "master_volume",
             "value": "Master"
         },
@@ -138,7 +142,7 @@
         },
         {
             "key": "other_tutorial",
-            "value": "Use SHIFT to run and SPACE to JUMP"
+            "value": "Use SHIFT to run and TAB to access the inventory"
         },
         {
             "key": "look_mirror",
@@ -201,6 +205,10 @@
             "value": "Use"
         },
         {
+            "key": "remove_item",
+            "value": "Remove"
+        },
+        {
             "key": "prison_flower",
             "value": "Jail key"
         },
@@ -243,6 +251,122 @@
         {
             "key": "back_to_menu",
             "value": "Back to menu?"
+        },
+        {
+            "key": "winterberry_description",
+            "value": "Ilex is a species of sacred flower and is originally from the north of Gahats, used for medicinal purposes. The plant loses all leaves in winter, only the typical fruits that are slightly toxic to the Huneros remain. Ilex leaves symbolize love and hope, for centuries, she was the bearer of luck. Huneros adored the tree and used it to keep witches (and other evils) away. You should never cut an Ilex tree or branch because it brings bad luck."
+        },
+        {
+            "key": "gardenia_description",
+            "value": "Gardenia is a plant widely used to show feelings. It is associated with innocence, sincerity and sweetness, that is, pure feelings. And in addition to its medicinal properties it is widely recognized for its perfume, receiving homage with songs by the Huneros."
+        },
+        {
+            "key": "carnation_description",
+            "value": "The carnation is a flower that must be cultivated in warm, fertilized and not very humid soil. The carnation flower represents good luck, that is, the gift of attracting blessings and victories. Its engaging and seductive perfume and its vibrant colors cheer and warm the hearts of both those who give a carnation as a gift and those who receive it as well."
+        },
+        {
+            "key": "other_flower",
+            "value": "No, bring other flower..."
+        },
+        {
+            "key": "wrong_flower_1",
+            "value": "NO!! WHAT YOU DID!"
+        },
+        {
+            "key": "wrong_flower_2",
+            "value": "HOW DARE YOU CUT THE SACRED BRANCH?!"
+        },
+        {
+            "key": "wrong_flower_3",
+            "value": "Go away, freak!"
+        },
+        {
+            "key": "correct_flower_1",
+            "value": "So.. so cold.."
+        },
+        {
+            "key": "correct_flower_2",
+            "value": "What.. what's that in the snow?"
+        },
+        {
+            "key": "correct_flower_3",
+            "value": "A flower full of blood?"
+        },
+        {
+            "key": "correct_flower_4",
+            "value": "That's not good, where this came from..."
+        },
+        {
+            "key": "correct_flower_5",
+            "value": "OH MY GOD! It's that a dragon? Is on the verge of death"
+        },
+        {
+            "key": "correct_flower_6",
+            "value": "I need to take him to my tent, there's no much time."
+        },
+        {
+            "key": "receive_flower_memory",
+            "value": "You receive the flower memory."
+        },
+        {
+            "key": "flower_memory_name",
+            "value": "Flower Memory"
+        },
+        {
+            "key": "flower_memory",
+            "value": "The creature remembers the moment when a completely wounded dragon leaves traces of blood in the snow, until fall and is found by a Hunera who decides to take him to his home. Was he the dragon ?!"
+        },
+        {
+            "key": "need_remedy_1",
+            "value": "Hurrry, i need to make a remedy"
+        },
+        {
+            "key": "need_remedy_2",
+            "value": "Oh my, where my pitcher is, I need sap too"
+        },
+        {
+            "key": "pedestal",
+            "value": "Pedestal"
+        },
+        {
+            "key": "ymir_explanation_1",
+            "value": "So you found this pedestal, little one."
+        },
+        {
+            "key": "ymir_explanation_2",
+            "value": "Here is your way out, anytime"
+        },
+        {
+            "key": "ymir_explanation_3",
+            "value": "You can deposit your memories and follow a new phase in your life."
+        },
+        {
+            "key": "ymir_explanation_4",
+            "value": "But be sure of all your decisions, and the direction you seek to go from here."
+        },
+        {
+            "key": "offered_memories",
+            "value": "Offered memories"
+        },
+        {
+            "key": "player_memories",
+            "value": "Available memories"
+        },
+        {
+            "key": "final_0_0",
+            "value": "The little creature left the place, but without the courage to take any memories from his past,  it's unknown if he was out of fear or the desire to start a new life, what's known is that it left the nightmare that it haunted for a long time, the miserable agony surrounded by the curious dungeon he had faced each night would finally cease."
+        },
+        {
+            "key": "final_0_1",
+            "value": "All this thanks to Ymir's blessings, but by taking no memory out of the dungeon, his conscience went with him, and so for the rest of his life, the young creature was raised as a mere domestic animal, surrounded by loving feelings of a Hunera from the region."
+        },
+        {
+            "key": "final_0_2",
+            "value": "The creature lived for about ten years in the domestic corner, apparently dying from natural causes, but with a life without regrets."
+        },
+        {
+            "key": "null",
+            "value": ""
         }
     ]
 }

@@ -8,15 +8,16 @@ public class GeneralMenuController : MonoBehaviour
     public Animator BackMenu;
 
     private AudioManager audioManager;
+    public GameObject configurations;
 
     private void Start()
     {
         audioManager = FindObjectOfType<AudioManager>();
-        audioManager.Play("MenuMusic");
     }
 
     public void BackMenuButton()
     {
+        configurations.SetActive(false);
         QuitGame.SetBool("AppearBox", false);
         audioManager.Play("ClickButton");
         BackMenu.SetBool("AppearBox", true);
@@ -36,6 +37,7 @@ public class GeneralMenuController : MonoBehaviour
 
     public void QuitButton()
     {
+        configurations.SetActive(false);
         BackMenu.SetBool("AppearBox", false);
         audioManager.Play("ClickButton");
         QuitGame.SetBool("AppearBox", true);
@@ -52,8 +54,16 @@ public class GeneralMenuController : MonoBehaviour
         Application.Quit();
     }
 
+    public void OpenConfigurations()
+    {
+        configurations.SetActive(true);
+        BackMenu.SetBool("AppearBox", false);
+        QuitGame.SetBool("AppearBox", false);
+    }
+
     public void BackGameButton()
     {
+        configurations.SetActive(false);
         QuitGame.SetBool("AppearBox", false);
         BackMenu.SetBool("AppearBox", false);
         audioManager.Play("ClickButton");

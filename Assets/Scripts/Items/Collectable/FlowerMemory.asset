@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c40989f1ca12df7479875edbc31bd758, type: 3}
+  m_Name: FlowerMemory
+  m_EditorClassIdentifier: 
+  image: {fileID: 21300000, guid: ba29126c800e3b94299d6aeb19311dd2, type: 3}
+  type: 2
+  nameItem: flower_memory_name
+  pages: 1
+  keys:
+  - flower_memory

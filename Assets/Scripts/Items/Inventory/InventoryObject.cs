@@ -5,9 +5,12 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "New Inventory", menuName ="InventorySystem/Inventory")]
 public class InventoryObject : ScriptableObject
 {
-    public List<InventorySlot> inventory = new List<InventorySlot>();
+    public List<ItemObject> inventory = new List<ItemObject>();
     public bool hasLimit;
     public int limit;
+
+    public delegate void OnItemChanged();
+    public OnItemChanged onItemChangedCallback;
 
     public void Clear()
     {
@@ -25,29 +28,29 @@ public class InventoryObject : ScriptableObject
 
     public void AddItem(ItemObject item)
     {
-        inventory.Add(new InventorySlot(item));
+        inventory.Add(item);
+
+        if (onItemChangedCallback != null)
+            onItemChangedCallback.Invoke();
+    }
+
+    public void Remove(ItemObject item)
+    {
+        inventory.Remove(item);
+
+        if (onItemChangedCallback != null)
+            onItemChangedCallback.Invoke();
     }
 
     public bool Find(string item)
     {
-        foreach(InventorySlot slot in inventory)
+        foreach(ItemObject slot in inventory)
         {
-            if(slot.item.nameItem == item)
+            if(slot.nameItem == item)
             {
                 return true;
             }
         }
         return false;
-    }
-}
-
-[System.Serializable]
-public class InventorySlot
-{
-    public ItemObject item;
-
-    public InventorySlot(ItemObject item)
-    {
-        this.item = item;
     }
 }
