@@ -16,7 +16,7 @@ public class MirrorMoment : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (player.getInteractTrigger())
+        if (player.GetInteractTrigger())
         {
             player.EnableControls();
             dialogue.Play();

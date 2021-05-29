@@ -79,7 +79,7 @@ public class TentChoice : MonoBehaviour
 
     void Update()
     {
-        if ((inWrongDialogue || correctDialoguePhase > 0) && player.getInteractTrigger())
+        if ((inWrongDialogue || correctDialoguePhase > 0) && player.GetInteractTrigger())
         {
             if (!dialogue.getDialogueEnded())
             {

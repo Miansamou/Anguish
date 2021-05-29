@@ -17,7 +17,7 @@ public class CollectableItem : Interactable
 
         textMessage.SetActive(true);
 
-        if (player.getInteractTrigger())
+        if (player.GetInteractTrigger())
         {
             Acting();
         }

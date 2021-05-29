@@ -242,10 +242,10 @@
     "hlslDeclarationOverride": 0,
     "m_Hidden": false,
     "m_Value": {
-        "r": 0.9245283007621765,
-        "g": 0.34451761841773989,
-        "b": 0.34451761841773989,
-        "a": 0.0
+        "r": 1.0,
+        "g": 1.0,
+        "b": 1.0,
+        "a": 1.0
     },
     "m_ColorMode": 0
 }
@@ -262,8 +262,8 @@
         "m_Expanded": true,
         "m_Position": {
             "serializedVersion": "2",
-            "x": -819.0000610351563,
-            "y": 62.999996185302737,
+            "x": -819.0,
+            "y": 62.99999237060547,
             "width": 107.0,
             "height": 34.0
         }
@@ -393,8 +393,8 @@
         "m_Expanded": true,
         "m_Position": {
             "serializedVersion": "2",
-            "x": -525.0,
-            "y": 311.0,
+            "x": -526.0,
+            "y": 302.9999694824219,
             "width": 208.00001525878907,
             "height": 302.0
         }
@@ -629,7 +629,7 @@
     "m_Hidden": false,
     "m_ShaderOutputName": "Power",
     "m_StageCapability": 3,
-    "m_Value": 1.0,
+    "m_Value": 1.5,
     "m_DefaultValue": 1.0,
     "m_Labels": []
 }

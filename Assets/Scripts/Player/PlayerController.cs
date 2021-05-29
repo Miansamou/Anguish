@@ -1,55 +1,66 @@
-﻿using System.Collections;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
 {
-    public Transform cam;
-    public float JumpHeight;
-    public float DistToGround;
-    public float InterectableRange;
-    public InputActionAsset Controller;
-    public float normalSpeed;
-    public float sprintSpeed;
-    public GameObject interactText;
-    public GameObject GeneralMenu;
-    public PlayerMenu PlayerMenu;
 
+    #region variables
+
+    //Set in Inspector
+    [SerializeField]
+    private InputActionAsset controller;
+    [SerializeField]
+    private PlayerMenu playerMenu;
+    [SerializeField]
+    private GameObject interactText;
+    [SerializeField]
+    private GameObject generalMenu;
+    [SerializeField]
+    private float interectableRange;
+    [SerializeField]
+    private float normalSpeed;
+    [SerializeField]
+    private float sprintSpeed;
+
+    //Set in Script
     private CharacterController characterController;
-    private float cameraAngle;
-    private Vector2 previousMovement;
-    //private Vector3 playerVelocity;
-    private float playerSpeed;
-    private float turnSmoothTime = 0.1f;
-    private float turnSmoothVelocity;
-    //private float gravity = -20f;
-    private bool playerGrounded;
     private Interactable actualObjectInteract;
     private PlayerItems inventory;
+    private Animator anim;
+    private Transform cam;
+    private Vector2 previousMovement;
+    private readonly float turnSmoothTime = 0.1f;
+    private float turnSmoothVelocity;
+    private float cameraAngle;
+    private float playerSpeed;
 
     // Inputs
-    //private InputAction jumpKey;
+    private InputAction interactKey;
     private InputAction movementKey;
     private InputAction runKey;
-    private InputAction interactKey;
     private InputAction escKey;
     private InputAction tabKey;
 
     private AudioManager audioManager;
 
+    #endregion
+
+    #region initialization
+
     private void Awake()
     {
         characterController = GetComponent<CharacterController>();
         inventory = GetComponent<PlayerItems>();
+        anim = GetComponentInChildren<Animator>();
     }
 
     void Start()
     {
-        audioManager = FindObjectOfType<AudioManager>();
-        InputActionMap Map = Controller.FindActionMap("PlayerInput");
-        InputActionMap MapUi = Controller.FindActionMap("UIController");
+        cam = Camera.main.transform;
+        audioManager = GameObject.FindWithTag("AudioController").GetComponent<AudioManager>();
+        InputActionMap Map = controller.FindActionMap("PlayerInput");
+        InputActionMap MapUi = controller.FindActionMap("UIController");
 
-        //jumpKey = Map.FindAction("Jump");
         movementKey = Map.FindAction("Movement");
         runKey = Map.FindAction("Run");
         interactKey = Map.FindAction("Interact");
@@ -58,7 +69,11 @@ public class PlayerController : MonoBehaviour
 
     }
 
-    public bool getInteractTrigger()
+    #endregion
+
+    #region controls methods
+
+    public bool GetInteractTrigger()
     {
         if (interactKey.triggered)
         {
@@ -69,7 +84,6 @@ public class PlayerController : MonoBehaviour
 
     public void EnableControls()
     {
-        //EnableKey("jump");
         EnableKey("movement");
         EnableKey("run");
         EnableKey("interact");
@@ -79,7 +93,6 @@ public class PlayerController : MonoBehaviour
 
     public void DisableControls()
     {
-        //DisableKey("jump");
         DisableKey("movement");
         EnableKey("run");
         DisableKey("interact");
@@ -91,9 +104,6 @@ public class PlayerController : MonoBehaviour
     {
         switch (key)
         {
-            case "jump":
-                //jumpKey.Enable();
-                break;
             case "movement":
                 movementKey.Enable();
                 break;
@@ -119,9 +129,6 @@ public class PlayerController : MonoBehaviour
     {
         switch (key)
         {
-            case "jump":
-                //jumpKey.Disable();
-                break;
             case "movement":
                 movementKey.Disable();
                 break;
@@ -143,10 +150,12 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    #endregion
+
+    #region actions
+
     void Update()
     {
-        //Jump();
-
         Move();
 
         Interact();
@@ -158,42 +167,39 @@ public class PlayerController : MonoBehaviour
     {
         if (escKey.triggered)
         {
-            if (GeneralMenu.activeInHierarchy)
+            if (generalMenu.activeInHierarchy)
             {
                 EnableKey("tab");
                 EnableKey("movement");
                 EnableKey("run");
-                GeneralMenu.SetActive(false);
+                generalMenu.SetActive(false);
             }
             else
             {
                 DisableKey("tab");
-                //EnableKey("jump");
-                GeneralMenu.SetActive(true);
+                generalMenu.SetActive(true);
             }
         }
         
         if (tabKey.triggered)
         {
-            if (PlayerMenu.gameObject.activeInHierarchy)
+            if (playerMenu.gameObject.activeInHierarchy)
             {
                 EnableKey("esc");
                 EnableKey("movement");
                 EnableKey("run");
-                PlayerMenu.gameObject.SetActive(false);
-                PlayerMenu.ItemButton();
+                playerMenu.gameObject.SetActive(false);
+                playerMenu.ItemButton();
             }
             else
             {
                 DisableKey("esc");
-                //EnableKey("jump");
-                PlayerMenu.gameObject.SetActive(true);
+                playerMenu.gameObject.SetActive(true);
             }
         }
 
-        if (GeneralMenu.activeInHierarchy || PlayerMenu.gameObject.activeInHierarchy)
+        if (generalMenu.activeInHierarchy || playerMenu.gameObject.activeInHierarchy)
         {
-            //DisableKey("jump");
             DisableKey("movement");
             DisableKey("run");
             Time.timeScale = 0;
@@ -201,29 +207,6 @@ public class PlayerController : MonoBehaviour
         else
             Time.timeScale = 1;
     }
-
-    /*private void Jump()
-    {
-        playerGrounded = Physics.Raycast(transform.position, Vector3.down, DistToGround);
-
-        Debug.DrawRay(transform.position, Vector3.down, Color.red, DistToGround);
-
-        if (jumpKey.triggered && playerGrounded)
-        {
-            playerVelocity.y = transform.position.y;
-            playerVelocity.y += JumpHeight;
-        }
-        else if (playerGrounded)
-        {
-            playerVelocity.y = 0;
-        }
-
-        if (!playerGrounded)
-        {
-            playerVelocity.y += (gravity * Time.deltaTime);
-        }
-        characterController.Move(Time.deltaTime * playerVelocity);
-    }*/
 
     private void Move()
     {
@@ -238,13 +221,16 @@ public class PlayerController : MonoBehaviour
 
         Vector3 moving = new Vector3(movement.x, 0, movement.y).normalized;
 
+        anim.SetFloat("movement", moving.magnitude);
+        anim.SetBool("run", false);
+
         playerSpeed = normalSpeed;
 
         if (runKey.ReadValue<float>() == 1)
         {
+            anim.SetBool("run", true);
             playerSpeed = sprintSpeed;
         }
-
 
         if (moving.magnitude >= 0.1f)
         {
@@ -260,7 +246,7 @@ public class PlayerController : MonoBehaviour
                 audioManager.Play("BrickSteps", true);
         }
 
-        if(!playerGrounded || moving.magnitude < 0.1f)
+        if(moving.magnitude < 0.1f)
             audioManager.StopSound("BrickSteps");
     }
 
@@ -268,12 +254,12 @@ public class PlayerController : MonoBehaviour
     {
         Ray ray = new Ray(transform.position, transform.forward);
 
-        Debug.DrawRay(transform.position, transform.forward, Color.blue, InterectableRange);
+        Debug.DrawRay(transform.position, transform.forward, Color.blue, interectableRange);
 
         RaycastHit hit;
         if (Physics.Raycast(ray, out hit))
         {
-            if (hit.distance < InterectableRange && hit.transform.CompareTag("Selectable"))
+            if (hit.distance < interectableRange && hit.transform.CompareTag("Selectable"))
             {
                 
                 Interactable interact = hit.transform.GetComponent<Interactable>();
@@ -316,4 +302,6 @@ public class PlayerController : MonoBehaviour
             }
         }
     }
+
+    #endregion
 }

@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - Selectable
+  - AudioController
   layers:
   - Default
   - TransparentFX

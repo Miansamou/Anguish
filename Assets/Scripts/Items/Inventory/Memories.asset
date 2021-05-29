@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d0c3ec9aa1c106542b90b72c5b74cece, type: 3}
   m_Name: Memories
   m_EditorClassIdentifier: 
-  inventory: []
+  inventory:
+  - {fileID: 11400000, guid: 6723333642217624080f544d0e454a33, type: 2}
   hasLimit: 0
   limit: 0

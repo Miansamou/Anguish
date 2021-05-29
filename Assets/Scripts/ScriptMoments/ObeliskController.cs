@@ -47,7 +47,7 @@ public class ObeliskController : MonoBehaviour
     {
         if (YmirExplanation.activeInHierarchy)
         {
-            if (player.getInteractTrigger())
+            if (player.GetInteractTrigger())
             {
                 if (!YmirDialogue.getDialogueEnded())
                 {

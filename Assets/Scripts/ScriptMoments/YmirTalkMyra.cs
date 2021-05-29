@@ -26,7 +26,7 @@ public class YmirTalkMyra : MonoBehaviour
         {
             if (!dialogueBox.getDialogueEnded())
             {
-                if (player.getInteractTrigger() && dialogueBox.getEndLine())
+                if (player.GetInteractTrigger() && dialogueBox.getEndLine())
                     dialogueBox.Play();
             }
             else

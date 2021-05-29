@@ -14,7 +14,7 @@ public class Mirror : Interactable
 
         textMessage.SetActive(true);
 
-        if (player.getInteractTrigger())
+        if (player.GetInteractTrigger())
         {
             Acting();
         }
