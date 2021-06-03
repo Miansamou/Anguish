@@ -4,24 +4,45 @@ using UnityEngine.UI;
 
 public class TentChoice : MonoBehaviour
 {
-    public PlayerController player;
-    public PlayerItems inventory;
-    public DialogueLine dialogue;
-    public ItemObject FlowerMemory;
-    public string[] RemedyKeys;
+    #region variables
 
-    public Button[] btns;
+    [Header("Player")]
+    [SerializeField]
+    private PlayerController player;
+    [SerializeField]
+    private PlayerItems inventory;
+    [SerializeField]
+    private PlayerGoals goals;
 
-    public ItemObject[] items;
+    [Header("Dialogue")]
+    [SerializeField]
+    private DialogueLine dialogue;
+    [SerializeField]
+    private GameObject myra;
+    [SerializeField]
+    private GameObject darkMyra;
 
-    public GameObject Tent;
-    public GameObject Myra;
-    public GameObject DarkMyra;
-    public GameObject backButton;
+    [Header("Items")]
+    [SerializeField]
+    private string popUpMessage;
+    [SerializeField]
+    private ItemObject flowerMemory;
+    [SerializeField]
+    private GameObject backButton;
+    [SerializeField]
+    private GameObject tent;
+    [SerializeField]
+    private Button[] btns;
+    [SerializeField]
+    private ItemObject[] items;
 
     private Animator anim;
     private bool inWrongDialogue = false;
-    private int correctDialoguePhase = 0;
+    private bool correctDialoguePhase = false;
+
+    #endregion
+
+    #region initialization
 
     private void Awake()
     {
@@ -33,19 +54,9 @@ public class TentChoice : MonoBehaviour
         player.DisableControls();
         player.EnableKey("interact");
 
-        if(correctDialoguePhase > 0)
-        {
-            Myra.SetActive(true);
-            dialogue.ClearText();
-            foreach(string key in RemedyKeys)
-            {
-                dialogue.AddKey(key);
-            }
-            dialogue.Play();
-            return;
-        }
+        goals.SetMyraGoal("bring_flower");
 
-        dialogue.resetDialogue();
+        dialogue.ResetDialogue();
         dialogue.Play();
 
         int j = 0;
@@ -77,98 +88,49 @@ public class TentChoice : MonoBehaviour
         anim.SetBool("OptionsActive", true);
     }
 
-    void Update()
-    {
-        if ((inWrongDialogue || correctDialoguePhase > 0) && player.GetInteractTrigger())
-        {
-            if (!dialogue.getDialogueEnded())
-            {
-                if (dialogue.getEndLine())
-                    dialogue.Play();
-            }
-            else if(inWrongDialogue)
-            {
-                Tent.tag = "Untagged";
-                CloseDialogue();
-            }
-            else if (correctDialoguePhase == 1)
-            {
-                correctDialoguePhase = 2;
-                Myra.SetActive(false);
-                dialogue.AddKey("receive_flower_memory");
-                inventory.AddMemory(FlowerMemory);
-                inventory.RemoveItem(items[1]);
-                dialogue.Play();
-            }
-            else if (correctDialoguePhase == 2)
-            {
-                correctDialoguePhase = 3;
-                CloseDialogue();
-            }
-            else if(correctDialoguePhase == 3)
-            {
-                CloseDialogue();
-            }
-        }
-    }
-
     IEnumerator UpdateButtonText(Button btn, string text)
     {
         LocalizedText localized = btn.GetComponentInChildren<LocalizedText>();
         localized.UpdateText();
-        
+
         yield return new WaitForSeconds(0.1f);
 
         localized.AddText(text);
     }
 
-    public void GiveCarnation()
+    #endregion
+
+    #region controller
+
+    void Update()
     {
-        if (dialogue.getEndLine())
-        {
-            dialogue.AddKey("other_flower");
-            dialogue.Play();
-        }
+        DialogueController();
     }
 
-    public void GiveGardenia()
+    private void DialogueController()
     {
-        if (dialogue.getEndLine())
+        if ((inWrongDialogue || correctDialoguePhase) && player.GetInteractTrigger())
         {
-            correctDialoguePhase = 1;
-
-            foreach (Button btn in btns)
+            if (!dialogue.GetDialogueEnded())
             {
-                btn.gameObject.SetActive(false);
+                if (dialogue.GetEndLine())
+                    dialogue.Play();
             }
-            backButton.SetActive(false);
-            Myra.SetActive(true);
-            dialogue.AddKey("correct_flower_1");
-            dialogue.AddKey("correct_flower_2");
-            dialogue.AddKey("correct_flower_3");
-            dialogue.AddKey("correct_flower_4");
-            dialogue.AddKey("correct_flower_5");
-            dialogue.AddKey("correct_flower_6");
-            dialogue.Play();
-        }
-    }
-
-    public void GiveWinterberry()
-    {
-        if (dialogue.getEndLine())
-        {
-            inWrongDialogue = true;
-
-            foreach (Button btn in btns)
+            else if (inWrongDialogue)
             {
-                btn.gameObject.SetActive(false);
+                tent.tag = "Untagged";
+                goals.SetMyraGoal("end");
+                CloseDialogue();
             }
-            backButton.SetActive(false);
-            DarkMyra.SetActive(true);
-            dialogue.AddKey("wrong_flower_1");
-            dialogue.AddKey("wrong_flower_2");
-            dialogue.AddKey("wrong_flower_3");
-            dialogue.Play();
+            else if (correctDialoguePhase)
+            {
+                myra.SetActive(false);
+                inventory.AddMemory(flowerMemory, popUpMessage);
+                inventory.RemoveItem(items[1]);
+                tent.tag = "Untagged";
+                goals.SetMyraGoal("end");
+                CloseDialogue();
+            }
         }
     }
 
@@ -183,4 +145,77 @@ public class TentChoice : MonoBehaviour
         player.EnableControls();
         gameObject.SetActive(false);
     }
+
+    #endregion
+
+    #region give flower
+
+    public void GiveCarnation()
+    {
+        if (dialogue.GetEndLine())
+        {
+            dialogue.AddKey("other_flower");
+            dialogue.Play();
+        }
+    }
+
+    public void GiveGardenia()
+    {
+        if (dialogue.GetEndLine())
+        {
+            correctDialoguePhase = true;
+
+            foreach (Button btn in btns)
+            {
+                btn.gameObject.SetActive(false);
+            }
+            backButton.SetActive(false);
+            myra.SetActive(true);
+            dialogue.AddKey("correct_flower_1");
+            dialogue.AddKey("correct_flower_2");
+            dialogue.AddKey("correct_flower_3");
+            dialogue.AddKey("correct_flower_4");
+            dialogue.AddKey("correct_flower_5");
+            dialogue.AddKey("correct_flower_6");
+            dialogue.AddKey("correct_flower_7");
+            dialogue.AddKey("correct_flower_8");
+            dialogue.AddKey("correct_flower_9");
+            dialogue.AddKey("correct_flower_10");
+            dialogue.AddKey("correct_flower_11");
+            dialogue.AddKey("correct_flower_12");
+            dialogue.AddKey("correct_flower_13");
+            dialogue.AddKey("correct_flower_14");
+            dialogue.AddKey("correct_flower_15");
+            dialogue.AddKey("correct_flower_16");
+            dialogue.AddKey("correct_flower_17");
+            dialogue.AddKey("correct_flower_18");
+            dialogue.AddKey("correct_flower_19");
+            dialogue.AddKey("correct_flower_20");
+            dialogue.AddKey("correct_flower_21");
+            dialogue.AddKey("correct_flower_22");
+            dialogue.Play();
+        }
+    }
+
+    public void GiveWinterberry()
+    {
+        if (dialogue.GetEndLine())
+        {
+            inWrongDialogue = true;
+
+            foreach (Button btn in btns)
+            {
+                btn.gameObject.SetActive(false);
+            }
+            backButton.SetActive(false);
+            darkMyra.SetActive(true);
+            dialogue.AddKey("wrong_flower_1");
+            dialogue.AddKey("wrong_flower_2");
+            dialogue.AddKey("wrong_flower_3");
+            dialogue.AddKey("wrong_flower_4");
+            dialogue.Play();
+        }
+    }
+
+    #endregion
 }

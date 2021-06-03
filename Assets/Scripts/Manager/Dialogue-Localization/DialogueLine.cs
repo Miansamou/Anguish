@@ -1,14 +1,15 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
 public class DialogueLine : DialogueBaseClass
 {
     [Header("Text Options")]
-    public List<string> key;
+    [SerializeField]
+    private List<string> key;
+    [SerializeField]
+    private Color TextColor;
     private List<string> backupKey = new List<string>();
-    public Color TextColor;
     private int index;
     private bool dialogueEnded;
 
@@ -16,7 +17,8 @@ public class DialogueLine : DialogueBaseClass
     public float Delay;
 
     [Header("Sound/Voice")]
-    public string PlayableSound;
+    [SerializeField]
+    private string playableSound;
 
     private TextMeshProUGUI textHolder;
     private string input;
@@ -35,7 +37,7 @@ public class DialogueLine : DialogueBaseClass
         if (index < key.Count)
         {
             input = LocalizationManager.instance.GetLocalizedValue(key[index]);
-            StartCoroutine(WriteText(input, textHolder, TextColor, Delay, PlayableSound));
+            StartCoroutine(WriteText(input, textHolder, TextColor, Delay, playableSound));
         }
         else
             dialogueEnded = true;
@@ -62,12 +64,16 @@ public class DialogueLine : DialogueBaseClass
         }
     }
 
-    public bool getDialogueEnded()
+    public bool GetDialogueEnded()
     {
+        if(index >= key.Count)
+        {
+            dialogueEnded = true;
+        }
         return dialogueEnded;
     }
 
-    public void resetDialogue()
+    public void ResetDialogue()
     {
         index = 0;
         dialogueEnded = false;

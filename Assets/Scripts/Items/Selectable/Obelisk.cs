@@ -1,10 +1,14 @@
 using UnityEngine;
 
-public class Obelisk : Interactable
+public class Obelisk : IInteractable
 {
-    public GameObject textMessage;
     public GameObject obeliskCanvas;
     public string key;
+
+    private void Start()
+    {
+        player = GameObject.FindWithTag("Player").GetComponent<PlayerController>();
+    }
 
     public override void Act()
     {
@@ -23,6 +27,8 @@ public class Obelisk : Interactable
     {
         player.DisableKey("movement");
         player.DisableKey("run");
+        if(!obeliskCanvas.activeInHierarchy)
+            AudioManager.instance.Play("ObeliskInteract");
         obeliskCanvas.SetActive(true);
     }
 

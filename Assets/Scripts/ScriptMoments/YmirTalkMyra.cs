@@ -1,14 +1,17 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class YmirTalkMyra : MonoBehaviour
 {
-    public Animator fadeBlackScreen;
-    public GameObject cam;
-    public GameObject dialogue;
-    public DialogueLine dialogueBox;
-    public PlayerController player;
+    [SerializeField]
+    private Animator fadeBlackScreen;
+    [SerializeField]
+    private GameObject cam;
+    [SerializeField]
+    private GameObject dialogue;
+    [SerializeField]
+    private DialogueLine dialogueBox;
+    [SerializeField]
+    private PlayerController player;
 
     private void OnTriggerEnter(Collider other)
     {
@@ -16,7 +19,7 @@ public class YmirTalkMyra : MonoBehaviour
         {
             fadeBlackScreen.SetTrigger("FadeBlack");
 
-            Invoke("ActiveCamera", 1f);
+            Invoke(nameof(ActiveCamera), 1f);
         }
     }
 
@@ -24,16 +27,16 @@ public class YmirTalkMyra : MonoBehaviour
     {
         if (dialogue.activeInHierarchy)
         {
-            if (!dialogueBox.getDialogueEnded())
+            if (!dialogueBox.GetDialogueEnded())
             {
-                if (player.GetInteractTrigger() && dialogueBox.getEndLine())
+                if (player.GetInteractTrigger() && dialogueBox.GetEndLine())
                     dialogueBox.Play();
             }
             else
             {
                 dialogue.gameObject.SetActive(false);
                 cam.SetActive(false);
-                Invoke("EnableControl", 0.5f);
+                Invoke(nameof(EnableControl), 0.5f);
             }
         }
     }
@@ -44,7 +47,7 @@ public class YmirTalkMyra : MonoBehaviour
         player.DisableControls();
         player.EnableKey("interact");
 
-        Invoke("ActiveDialogue", 1.5f);
+        Invoke(nameof(ActiveDialogue), 1.5f);
     }
 
     private void ActiveDialogue()

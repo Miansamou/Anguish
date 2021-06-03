@@ -1,9 +1,9 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerItems : MonoBehaviour
 {
+    #region variables
+
     [Header("Inventories")]
     [SerializeField]
     private InventoryObject itemsForUse;
@@ -13,9 +13,12 @@ public class PlayerItems : MonoBehaviour
     private InventoryObject memories;
 
     [Header("Messages")]
-    public GameObject ConfirmationGetItems;
-    public GameObject ConfirmationUseItems;
-    public GameObject PoPUpMessage;
+    [SerializeField]
+    private GameObject confirmationGetItems;
+    [SerializeField]
+    private GameObject confirmationUseItems;
+    [SerializeField]
+    private GameObject poPUpMessage;
 
     private Animator animConfirmationGetItems;
     private Animator animConfirmationUseItems;
@@ -24,22 +27,27 @@ public class PlayerItems : MonoBehaviour
     private LocalizedText localizedConfirmationUseItems;
     private LocalizedText localizedPopUp;
     private CollectableItem collectableItem;
-    private Interactable interactableItem;
+    private IInteractable interactableItem;
+    private bool receiveFirstItem;
+
+    #endregion
+
+    #region initialization
 
     private void Start()
     {
-        animConfirmationGetItems = ConfirmationGetItems.GetComponent<Animator>();
-        animConfirmationUseItems = ConfirmationUseItems.GetComponent<Animator>();
-        animPoPUp = PoPUpMessage.GetComponent<Animator>();
-        localizedConfirmationGetItems = ConfirmationGetItems.GetComponentInChildren<LocalizedText>();
-        localizedConfirmationUseItems = ConfirmationUseItems.GetComponentInChildren<LocalizedText>();
-        localizedPopUp = PoPUpMessage.GetComponentInChildren<LocalizedText>();
+        receiveFirstItem = false;
+        animConfirmationGetItems = confirmationGetItems.GetComponent<Animator>();
+        animConfirmationUseItems = confirmationUseItems.GetComponent<Animator>();
+        animPoPUp = poPUpMessage.GetComponent<Animator>();
+        localizedConfirmationGetItems = confirmationGetItems.GetComponentInChildren<LocalizedText>();
+        localizedConfirmationUseItems = confirmationUseItems.GetComponentInChildren<LocalizedText>();
+        localizedPopUp = poPUpMessage.GetComponentInChildren<LocalizedText>();
     }
 
-    public bool FindItemInInventory(string item)
-    {
-        return itemsForUse.Find(item);
-    }
+    #endregion
+
+    #region screens
 
     public void ShowConfirmationScreen(string ItemName)
     {
@@ -67,12 +75,13 @@ public class PlayerItems : MonoBehaviour
         animConfirmationUseItems.SetBool("AppearBox", false);
     }
 
-    public void GetItem()
+    #endregion
+
+    #region usable item
+
+    public bool FindItemInInventory(string item)
     {
-        if(collectableItem != null)
-        {
-            collectableItem.AddItem();
-        }
+        return itemsForUse.Find(item);
     }
 
     public void UseItem()
@@ -83,7 +92,7 @@ public class PlayerItems : MonoBehaviour
         }
     }
 
-    public void ReceiveItemFromController(Interactable item)
+    public void ReceiveItemFromController(IInteractable item)
     {
         try
         {
@@ -104,14 +113,30 @@ public class PlayerItems : MonoBehaviour
         }
     }
 
-    public bool AddItem(ItemObject item)
+    #endregion
+
+    #region add/remove
+
+    public bool AddItem(ItemObject item, string itemMessage)
     {
+        if (!receiveFirstItem)
+        {
+            receiveFirstItem = true;
+            StartCoroutine(TutorialBoxController.instance.ActiveTextTutorial("Inventory", 0f));
+            StartCoroutine(TutorialBoxController.instance.PlayAnimation(0.75f));
+            StartCoroutine(TutorialBoxController.instance.ExitTutorial(3f));
+        }
+
         if (itemsForUse.isFull())
         {
             localizedPopUp.SetNewKey("inventory_full");
+            localizedPopUp.UpdateText();
             animPoPUp.SetTrigger("ShowBox");
             return false;
         }
+        localizedPopUp.SetNewKey(itemMessage);
+        localizedPopUp.UpdateText();
+        animPoPUp.SetTrigger("ShowBox");
         itemsForUse.AddItem(item);
         return true;
     }
@@ -121,32 +146,62 @@ public class PlayerItems : MonoBehaviour
         itemsForUse.Remove(item);
     }
 
-    public bool AddDocument(ItemObject item)
+    public bool AddDocument(ItemObject item, string itemMessage)
     {
+        if (!receiveFirstItem)
+        {
+            receiveFirstItem = true;
+            StartCoroutine(TutorialBoxController.instance.ActiveTextTutorial("Inventory", 0f));
+            Invoke(nameof(TutorialBoxController.instance.PlayAnimation), 0.75f);
+            Invoke(nameof(TutorialBoxController.instance.ExitTutorial), 3f);
+        }
+
+        localizedPopUp.SetNewKey(itemMessage);
+        localizedPopUp.UpdateText();
+        animPoPUp.SetTrigger("ShowBox");
         documents.AddItem(item);
         return true;
     }
 
-    public bool AddMemory(ItemObject item)
+    public bool AddMemory(ItemObject item, string itemMessage)
     {
+        localizedPopUp.SetNewKey(itemMessage);
+        localizedPopUp.UpdateText();
+        animPoPUp.SetTrigger("ShowBox");
         memories.AddItem(item);
         return true;
     }
 
-    public InventoryObject getItems()
+    #endregion
+
+    #region get/set
+
+    public void GetItem()
+    {
+        if (collectableItem != null)
+        {
+            collectableItem.AddItem();
+        }
+    }
+
+    public InventoryObject GetItems()
     {
         return itemsForUse;
     }
 
-    public InventoryObject getDocuments()
+    public InventoryObject GetDocuments()
     {
         return documents;
     }
 
-    public InventoryObject getMemories()
+    public InventoryObject GetMemories()
     {
         return memories;
     }
+
+    #endregion
+
+    #region end application
 
     private void OnApplicationQuit()
     {
@@ -154,4 +209,6 @@ public class PlayerItems : MonoBehaviour
         documents.Clear();
         memories.Clear();
     }
+
+    #endregion
 }

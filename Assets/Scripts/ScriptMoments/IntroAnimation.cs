@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using Cinemachine;
 using UnityEngine;
 using UnityEngine.Rendering;
@@ -7,64 +5,123 @@ using UnityEngine.Rendering.Universal;
 
 public class IntroAnimation : MonoBehaviour
 {
-    public Animator CameraAnimate;
-    public GameObject CanvasBlinkEyes;
-    public Volume Blur;
-    public CinemachineVirtualCamera nextCamera;
-    public GameObject Tutorial;
+    #region variables
 
-    private float speed;
+    [Header("Cameras")]
+    [SerializeField]
+    private Animator cameraAnimate;
+    [SerializeField]
+    private CinemachineVirtualCamera nextCamera;
+
+    [Header("Effects")]
+    [SerializeField]
+    private GameObject canvasBlinkEyes;
+    [SerializeField]
+    private Volume blur;
+
+    [Header("Tutorial")]
+    [SerializeField]
+    private GameObject tutorial;
+
+    [Header("Ymir")]
+    [SerializeField]
+    private GameObject ymirExplanation;
+    [SerializeField]
+    private PlayerController player;
+    [SerializeField]
+    private DialogueLine ymirDialogue;
+
+    private int speedBlur = 0;
     private DepthOfField bluring;
-    private AudioManager audioManager;
+    private string phase;
 
-    // Start is called before the first frame update
+    #endregion
+
+    #region initialization
+
     void Start()
     {
-        audioManager = FindObjectOfType<AudioManager>();
-        if(audioManager.getMusicIsPlaying())
-            StartCoroutine(audioManager.FadeOut(-0.02f));
+        phase = "cutscene";
 
-        Invoke("PlayCamera", 5f);
+        Invoke(nameof(PlayCamera), 5f);
 
-        DepthOfField tempDof;
-
-        if (Blur.profile.TryGet<DepthOfField>(out tempDof))
+        if (blur.profile.TryGet<DepthOfField>(out DepthOfField tempDof))
         {
             bluring = tempDof;
         }
     }
 
+    #endregion
+
+    #region cutscene
+
     private void Update()
     {
-        bluring.aperture.value += speed * Time.deltaTime;
+        bluring.aperture.value += speedBlur * Time.deltaTime;
+
+        YmirDialogue();
     }
 
     private void PlayCamera()
     {
-        CanvasBlinkEyes.SetActive(false);
+        cameraAnimate.SetTrigger("IntroAnimationCamera");
 
-        CameraAnimate.SetTrigger("IntroAnimationCamera");
+        Invoke(nameof(ClearScreen), 0.5f);
 
-        Invoke("ClearScreen", 0.5f);
-
-        Invoke("EndIntro", 3f);
+        Invoke(nameof(EndIntro), 3f);
     }
 
     private void ClearScreen()
     {
-        speed = 8;
+        speedBlur = 8;
     }
 
     private void EndIntro()
     {
-        CameraAnimate.GetComponent<CinemachineVirtualCamera>().enabled = false;
+        cameraAnimate.GetComponent<CinemachineVirtualCamera>().enabled = false;
         nextCamera.enabled = true;
 
         bluring.aperture.value = 0;
-        Blur.gameObject.SetActive(false);
+        blur.gameObject.SetActive(false);
 
-        Tutorial.SetActive(true);
-
-        gameObject.SetActive(false);
+        phase = "ymir";
     }
+
+    #endregion
+
+    #region ymir
+
+    private void YmirDialogue()
+    {
+        if (phase.Equals("ymir"))
+        {
+            if (ymirExplanation.activeInHierarchy)
+            {
+                if (player.GetInteractTrigger())
+                {
+                    if (!ymirDialogue.GetDialogueEnded())
+                    {
+                        if (ymirDialogue.GetEndLine())
+                            ymirDialogue.Play();
+                    }
+                    else
+                    {
+                        canvasBlinkEyes.SetActive(false);
+                        phase = "finish";
+                        ymirExplanation.SetActive(false);
+                        tutorial.SetActive(true);
+                        gameObject.SetActive(false);
+                    }
+                }
+            }
+            else
+            {
+                ymirExplanation.SetActive(true);
+                ymirDialogue.Play();
+                player.EnableKey("interact");
+            }
+        }
+    }
+
+    #endregion
 }

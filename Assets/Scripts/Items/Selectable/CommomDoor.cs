@@ -1,27 +1,49 @@
 ﻿using UnityEngine;
 
-public class CommomDoor : Interactable
+public class CommomDoor : IInteractable
 {
-    public GameObject textMessage;
-    public Animator lockedMessage;
-    public string key;
-    public string animationName;
-    public bool locked;
-    public ItemObject keyToOpen;
-    public PlayerItems inventory;
+    #region variables
+
+    [SerializeField]
+    private Animator lockedMessage;
+
+    [Header("Open Door")]
+    [SerializeField]
+    private PlayerItems inventory;
+    [SerializeField]
+    private string animationName;
+    [SerializeField]
+    private string soundName;
+    [SerializeField]
+    private ItemObject keyToOpen;
+    [SerializeField]
+    private bool locked;
+    [SerializeField]
+    private string key;
 
     private LocalizedText localized;
-
     private Animator animator;
+
+    #endregion
+
+    #region initialization
 
     private void Awake()
     {
         animator = GetComponent<Animator>();
     }
 
+    private void Start()
+    {
+        player = GameObject.FindWithTag("Player").GetComponent<PlayerController>();
+    }
+
+    #endregion
+
+    #region actions
+
     public override void Act()
     {
-
         LocalizedText localization = textMessage.GetComponent<LocalizedText>();
         localization.SetNewKey(key);
 
@@ -49,6 +71,7 @@ public class CommomDoor : Interactable
             lockedMessage.SetTrigger("ShowBox");
             return;
         }
+        AudioManager.instance.Play(soundName);
         animator.SetTrigger(animationName);
         this.gameObject.GetComponent<BoxCollider>().enabled = false;
     }
@@ -63,4 +86,6 @@ public class CommomDoor : Interactable
         locked = false;
         Acting();
     }
+
+    #endregion
 }

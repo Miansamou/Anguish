@@ -1,13 +1,17 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class GameScenes : MonoBehaviour
 {
+    #region variables
+
     public static GameScenes instance;
 
     private int nextScene;
+
+    #endregion
+
+    #region initialization
 
     private void Awake()
     {
@@ -24,23 +28,33 @@ public class GameScenes : MonoBehaviour
         DontDestroyOnLoad(gameObject);
     }
 
-    public void setNextScene(int scene)
+    #endregion
+
+    #region get/set
+
+    public void SetNextScene(int scene)
     {
         nextScene = scene;
     }
 
-    public void LoadLevel(float waitTime)
+    public int GetNextScene()
     {
-        Invoke("LoadingLevel", waitTime);
+        return nextScene;
     }
 
-    public void LoadingLevel()
+    #endregion
+
+    #region load methods
+
+    public void LoadLevel(float waitTime)
+    {
+        Invoke(nameof(LoadingLevel), waitTime);
+    }
+
+    private void LoadingLevel()
     {
         SceneManager.LoadScene(1);
     }
 
-    public int getNextScene()
-    {
-        return nextScene;
-    }
+    #endregion
 }

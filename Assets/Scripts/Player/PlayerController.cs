@@ -3,28 +3,35 @@ using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
 {
-
     #region variables
 
-    //Set in Inspector
-    [SerializeField]
-    private InputActionAsset controller;
-    [SerializeField]
-    private PlayerMenu playerMenu;
+    [Header("Menus")]
     [SerializeField]
     private GameObject interactText;
     [SerializeField]
     private GameObject generalMenu;
     [SerializeField]
+    private PlayerMenu playerMenu;
+
+    [Header("Actions")]
+    [SerializeField]
+    private InputActionAsset controller;
+    [SerializeField]
     private float interectableRange;
+    [SerializeField]
+    private float viewTerrainRange;
     [SerializeField]
     private float normalSpeed;
     [SerializeField]
     private float sprintSpeed;
 
+    [Header("Enviroment")]
+    [SerializeField]
+    private LayerMask snowPlate;
+
     //Set in Script
     private CharacterController characterController;
-    private Interactable actualObjectInteract;
+    private IInteractable actualObjectInteract;
     private PlayerItems inventory;
     private Animator anim;
     private Transform cam;
@@ -41,8 +48,6 @@ public class PlayerController : MonoBehaviour
     private InputAction escKey;
     private InputAction tabKey;
 
-    private AudioManager audioManager;
-
     #endregion
 
     #region initialization
@@ -57,7 +62,6 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         cam = Camera.main.transform;
-        audioManager = GameObject.FindWithTag("AudioController").GetComponent<AudioManager>();
         InputActionMap Map = controller.FindActionMap("PlayerInput");
         InputActionMap MapUi = controller.FindActionMap("UIController");
 
@@ -176,29 +180,34 @@ public class PlayerController : MonoBehaviour
             }
             else
             {
+                AudioManager.instance.Play("ClickButton");
                 DisableKey("tab");
                 generalMenu.SetActive(true);
             }
         }
-        
-        if (tabKey.triggered)
+
+        if (playerMenu != null)
         {
-            if (playerMenu.gameObject.activeInHierarchy)
+            if (tabKey.triggered)
             {
-                EnableKey("esc");
-                EnableKey("movement");
-                EnableKey("run");
-                playerMenu.gameObject.SetActive(false);
-                playerMenu.ItemButton();
-            }
-            else
-            {
-                DisableKey("esc");
-                playerMenu.gameObject.SetActive(true);
+                if (playerMenu.gameObject.activeInHierarchy)
+                {
+                    EnableKey("esc");
+                    EnableKey("movement");
+                    EnableKey("run");
+                    playerMenu.gameObject.SetActive(false);
+                    playerMenu.ItemButton();
+                }
+                else
+                {
+                    AudioManager.instance.Play("ClickButton");
+                    DisableKey("esc");
+                    playerMenu.gameObject.SetActive(true);
+                }
             }
         }
 
-        if (generalMenu.activeInHierarchy || playerMenu.gameObject.activeInHierarchy)
+        if (generalMenu.activeInHierarchy || (playerMenu != null && playerMenu.gameObject.activeInHierarchy))
         {
             DisableKey("movement");
             DisableKey("run");
@@ -210,7 +219,11 @@ public class PlayerController : MonoBehaviour
 
     private void Move()
     {
+        Ray ray = new Ray(transform.position, -transform.up);
+        Debug.DrawRay(transform.position, -transform.up, Color.blue, interectableRange);
+
         Vector2 movement = movementKey.ReadValue<Vector2>();
+        string stepsName = "BrickSteps";
 
         if (movement == Vector2.zero || movement != previousMovement)
         {
@@ -230,6 +243,22 @@ public class PlayerController : MonoBehaviour
         {
             anim.SetBool("run", true);
             playerSpeed = sprintSpeed;
+            stepsName = "RunningBrickSteps";
+        }
+
+        if (Physics.Raycast(ray, out RaycastHit hit, snowPlate))
+        {
+            if (hit.distance < viewTerrainRange)
+            {
+                if (stepsName.Equals("BrickSteps"))
+                {
+                    stepsName = "SnowSteps";
+                }
+                else if (stepsName.Equals("RunningBrickSteps"))
+                {
+                    stepsName = "RunningSnowSteps";
+                }
+            }
         }
 
         if (moving.magnitude >= 0.1f)
@@ -242,12 +271,44 @@ public class PlayerController : MonoBehaviour
             Vector3 moveDirection = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
             characterController.Move(moveDirection * Time.deltaTime * playerSpeed);
 
-            if (!audioManager.getAudioIsPlaying("BrickSteps"))
-                audioManager.Play("BrickSteps", true);
+            if (!AudioManager.instance.GetAudioIsPlaying(stepsName))
+            {
+                if (stepsName.Equals("BrickSteps"))
+                {
+                    AudioManager.instance.StopSound("RunningBrickSteps");
+                    AudioManager.instance.StopSound("SnowSteps");
+                    AudioManager.instance.StopSound("RunningSnowSteps");
+                }
+                else if (stepsName.Equals("RunningSnowSteps"))
+                {
+                    AudioManager.instance.StopSound("BrickSteps");
+                    AudioManager.instance.StopSound("SnowSteps");
+                    AudioManager.instance.StopSound("RunningSnowSteps");
+                }
+                else if (stepsName.Equals("SnowSteps"))
+                {
+                    AudioManager.instance.StopSound("BrickSteps");
+                    AudioManager.instance.StopSound("RunningBrickSteps");
+                    AudioManager.instance.StopSound("RunningSnowSteps");
+                }
+                else if (stepsName.Equals("RunningSnowSteps"))
+                {
+                    AudioManager.instance.StopSound("BrickSteps");
+                    AudioManager.instance.StopSound("RunningBrickSteps");
+                    AudioManager.instance.StopSound("SnowSteps");
+                }
+
+                AudioManager.instance.Play(stepsName, true, true);
+            }
         }
 
         if(moving.magnitude < 0.1f)
-            audioManager.StopSound("BrickSteps");
+        {
+            AudioManager.instance.PauseSound("BrickSteps");
+            AudioManager.instance.PauseSound("RunningBrickSteps");
+            AudioManager.instance.PauseSound("SnowSteps");
+            AudioManager.instance.PauseSound("RunningSnowSteps");
+        }
     }
 
     private void Interact()
@@ -256,26 +317,25 @@ public class PlayerController : MonoBehaviour
 
         Debug.DrawRay(transform.position, transform.forward, Color.blue, interectableRange);
 
-        RaycastHit hit;
-        if (Physics.Raycast(ray, out hit))
+        if (Physics.Raycast(ray, out RaycastHit hit))
         {
             if (hit.distance < interectableRange && hit.transform.CompareTag("Selectable"))
             {
-                
-                Interactable interact = hit.transform.GetComponent<Interactable>();
 
-                if(actualObjectInteract == null)
+                IInteractable interact = hit.transform.GetComponent<IInteractable>();
+
+                if (actualObjectInteract == null)
                 {
                     actualObjectInteract = interact;
                     inventory.ReceiveItemFromController(interact);
                 }
-                else if(interact != actualObjectInteract)
+                else if (interact != actualObjectInteract)
                 {
                     actualObjectInteract.CancelAct();
                     actualObjectInteract = interact;
                     inventory.ReceiveItemFromController(interact);
                 }
-                
+
                 interact.Act();
             }
             else
@@ -287,9 +347,12 @@ public class PlayerController : MonoBehaviour
                 }
                 else
                 {
-                    interactText.SetActive(false);
-                    inventory.HideConfirmationScreen();
-                    inventory.HideUseItemsScreen();
+                    if (interactText != null)
+                    {
+                        interactText.SetActive(false);
+                        inventory.HideConfirmationScreen();
+                        inventory.HideUseItemsScreen();
+                    }
                 }
             }
         }

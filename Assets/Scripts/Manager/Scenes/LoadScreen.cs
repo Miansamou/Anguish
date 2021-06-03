@@ -1,20 +1,21 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.UI;
 
 public class LoadScreen : MonoBehaviour
 {
-    public Image bar;
+    #region initialization
 
     private void Start()
     {
         Time.timeScale = 1;
-        bar.fillAmount = 0;
 
-        StartCoroutine(LoadAsynchronously(GameScenes.instance.getNextScene()));
+        StartCoroutine(LoadAsynchronously(GameScenes.instance.GetNextScene()));
     }
+
+    #endregion
+
+    #region loading
 
     IEnumerator LoadAsynchronously(int sceneindex)
     {
@@ -24,8 +25,6 @@ public class LoadScreen : MonoBehaviour
 
         while (!gameLevel.isDone)
         {
-            bar.fillAmount = gameLevel.progress;
-
             if (gameLevel.progress >= 0.9f)
             {
                 yield return new WaitForSeconds(0.5f);
@@ -35,4 +34,6 @@ public class LoadScreen : MonoBehaviour
             yield return null;
         }
     }
+
+    #endregion
 }

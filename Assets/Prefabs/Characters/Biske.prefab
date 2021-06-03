@@ -1598,13 +1598,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0c56aac2b4a77fe46bfd1bc477f16964, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  controller: {fileID: -944628639613478452, guid: ec6c36d7169893f49b438c911d405893, type: 3}
-  playerMenu: {fileID: 0}
   interactText: {fileID: 0}
   generalMenu: {fileID: 0}
+  playerMenu: {fileID: 0}
+  controller: {fileID: -944628639613478452, guid: ec6c36d7169893f49b438c911d405893, type: 3}
   interectableRange: 2.25
+  viewTerrainRange: 5
   normalSpeed: 4
   sprintSpeed: 15
+  snowPlate:
+    serializedVersion: 2
+    m_Bits: 128
 --- !u!114 &5942475940089075751
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1658,7 +1662,7 @@ Transform:
   m_GameObject: {fileID: 5942475940752834702}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 20, y: 20, z: 20}
+  m_LocalScale: {x: 22, y: 22, z: 22}
   m_Children: []
   m_Father: {fileID: 5942475940089075755}
   m_RootOrder: 1

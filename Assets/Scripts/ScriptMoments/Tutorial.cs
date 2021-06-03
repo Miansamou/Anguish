@@ -1,93 +1,88 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class Tutorial : MonoBehaviour
 {
-    public PlayerController player;
-    public Animator tutorialBox;
-    public GameObject movementText;
-    public GameObject interactText;
-    public GameObject otherText;
-    public InputActionAsset Controller;
-    public Collider cell;
+    #region variables
+
+    [Header("Input")]
+    [SerializeField]
+    private InputActionAsset controller;
+    [SerializeField]
+    private PlayerController player;
+
+    [Header("Interact trigger")]
+    [SerializeField]
+    private Collider cell;
 
     private int levelTutorial;
 
     // Inputs
     private InputAction movementKey;
 
+    #endregion
+
+    #region initialization
+
     private void Start()
     {
-        InputActionMap Map = Controller.FindActionMap("PlayerInput");
+        InputActionMap Map = controller.FindActionMap("PlayerInput");
 
         movementKey = Map.FindAction("Movement");
 
         levelTutorial = 0;
     }
 
-    // Start is called before the first frame update
     void OnEnable()
     {
         player.EnableKey("movement");
-        tutorialBox.SetTrigger("Enter");
-        movementText.SetActive(true);
         player.EnableKey("esc");
         player.EnableKey("tab");
+        StartCoroutine(TutorialBoxController.instance.ActiveTextTutorial("Movement", 0f));
+        StartCoroutine(TutorialBoxController.instance.PlayAnimation(0f));
     }
 
-    // Update is called once per frame
+    #endregion
+
+    #region tutorial controller
+
     void Update()
     {
-        if (movementText.activeInHierarchy && levelTutorial == 0)
+        TutorialController();
+    }
+
+    private void TutorialController()
+    {
+        if (levelTutorial == 0)
         {
             if (movementKey.ReadValue<Vector2>() != Vector2.zero)
             {
                 levelTutorial++;
-                tutorialBox.SetTrigger("Exit");
-                StartCoroutine(PlayAnimation(movementText, interactText));
-                player.EnableKey("interact");
+                StartCoroutine(TutorialBoxController.instance.ExitTutorial(0f));
+                StartCoroutine(TutorialBoxController.instance.PlayAnimation(1f));
+                StartCoroutine(TutorialBoxController.instance.ActiveTextTutorial("Interact", 1f));
             }
         }
 
-        if (interactText.activeInHierarchy && levelTutorial == 1)
+        if (levelTutorial == 1)
         {
             if (!cell.enabled)
             {
                 levelTutorial++;
-                tutorialBox.SetTrigger("Exit");
-                StartCoroutine(PlayAnimation(interactText, otherText));
                 player.EnableKey("run");
-                player.EnableKey("jump");
+                StartCoroutine(TutorialBoxController.instance.ExitTutorial(0f));
+                StartCoroutine(TutorialBoxController.instance.PlayAnimation(1f));
+                StartCoroutine(TutorialBoxController.instance.ActiveTextTutorial("Run", 1f));
             }
         }
 
-        if (otherText.activeInHierarchy && levelTutorial == 2)
+        if (levelTutorial == 2)
         {
             levelTutorial++;
-            Invoke("ExitTutorial", 3f);
-            Invoke("EndTutorial", 4f);
+            StartCoroutine(TutorialBoxController.instance.ExitTutorial(3f));
         }
     }
 
-    private IEnumerator PlayAnimation(GameObject oldText, GameObject newText)
-    {
-        yield return new WaitForSeconds(1f);
-
-        tutorialBox.SetTrigger("Enter");
-        oldText.SetActive(false);
-        newText.SetActive(true);
-    }
-
-    private void ExitTutorial()
-    {
-        tutorialBox.SetTrigger("Exit");
-    }
-
-    private void EndTutorial()
-    {
-        tutorialBox.gameObject.SetActive(false);
-        gameObject.SetActive(false);
-    }
+    #endregion
 }

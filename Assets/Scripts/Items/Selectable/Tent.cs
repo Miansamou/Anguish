@@ -1,10 +1,14 @@
 using UnityEngine;
 
-public class Tent : Interactable
+public class Tent : IInteractable
 {
-    public GameObject textMessage;
     public GameObject tentMessage;
     public string key;
+
+    private void Start()
+    {
+        player = GameObject.FindWithTag("Player").GetComponent<PlayerController>();
+    }
 
     public override void Act()
     {

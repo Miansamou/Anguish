@@ -18,7 +18,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4294967295
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &8320111674706528136
 Transform:
@@ -68,8 +68,8 @@ MeshRenderer:
   m_StaticBatchRoot: {fileID: 0}
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
+  m_ScaleInLightmap: 0.4
+  m_ReceiveGI: 2
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
@@ -123,7 +123,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4294967295
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &2545320290231949911
 Transform:
@@ -211,7 +211,7 @@ MeshRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
+  m_ReceiveGI: 2
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
@@ -271,8 +271,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   textMessage: {fileID: 0}
   lockedMessage: {fileID: 0}
-  key: open_cell
-  animationName: OpeningPrisonCell
-  locked: 0
-  keyToOpen: {fileID: 0}
   inventory: {fileID: 0}
+  animationName: OpeningPrisonCell
+  soundName: 
+  keyToOpen: {fileID: 0}
+  locked: 0
+  key: open_cell

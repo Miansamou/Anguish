@@ -1,27 +1,24 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 using System.IO;
 
-// This is how we create a list of the current language keys, and modify the texts
-// on the game.
-
 public class LocalizationManager : MonoBehaviour
 {
+    #region variables
 
-    // Instance to use this same datas in other scripts
     public static LocalizationManager instance;
 
     private Dictionary<string, string> localizedText;
-    private string missingTextString = "Text not found";
-
-
+    private readonly string missingTextString = "Text not found";
     private string filePath;
     private string dataAsJson;
 
+    #endregion
+
+    #region initialization
+
     void Awake()
     {
-        // Don't duplicate the LocalizationManager object at the scene
         if(instance == null)
         {
             instance = this;
@@ -30,6 +27,8 @@ public class LocalizationManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
+
+        DontDestroyOnLoad(instance);
 
         // Set first language in the Player Preferences based on  the System Language 
         // of the user's devices
@@ -51,6 +50,26 @@ public class LocalizationManager : MonoBehaviour
 
         LoadLocalizedText(PlayerPrefs.GetString("Language"));
     }
+
+    #endregion
+
+    #region get/set
+
+    public string GetLocalizedValue(string key)
+    {
+        string result = missingTextString;
+
+        if (localizedText.ContainsKey(key))
+        {
+            result = localizedText[key];
+        }
+
+        return result;
+    }
+
+    #endregion
+
+    #region methods
 
     // Change the json file used in the Player Preferences and update the texts seing at the scene
     public void ChangeLanguage()
@@ -80,19 +99,7 @@ public class LocalizationManager : MonoBehaviour
         {
             localizedText.Add(loadedData.items[i].key, loadedData.items[i].value);
         }
-
     }
 
-    // Receive the key and return the dialogue
-    public string GetLocalizedValue(string key)
-    {
-        string result = missingTextString;
-
-        if (localizedText.ContainsKey(key))
-        {
-            result = localizedText[key];
-        }
-
-        return result;
-    }
+    #endregion
 }

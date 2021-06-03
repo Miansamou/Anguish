@@ -28,7 +28,7 @@ public class ObeliskController : MonoBehaviour
         player.DisableControls();
         player.EnableKey("interact");
 
-        InventoryObject auxInventory = inventory.getMemories();
+        InventoryObject auxInventory = inventory.GetMemories();
         foreach(ItemObject obj in auxInventory.inventory)
         {
             memoriesPlayer.Add(obj);
@@ -49,9 +49,9 @@ public class ObeliskController : MonoBehaviour
         {
             if (player.GetInteractTrigger())
             {
-                if (!YmirDialogue.getDialogueEnded())
+                if (!YmirDialogue.GetDialogueEnded())
                 {
-                    if (YmirDialogue.getEndLine())
+                    if (YmirDialogue.GetEndLine())
                         YmirDialogue.Play();
                 }
                 else
@@ -65,6 +65,7 @@ public class ObeliskController : MonoBehaviour
 
     public void AddToPlayerMemory(ItemObject memory)
     {
+        AudioManager.instance.Play("ClickButton");
         memoriesPlayer.Add(memory);
         memoriesGiven.Remove(memory);
         OfferedMemoriesBox.UpdateMemories(memoriesGiven);
@@ -73,6 +74,7 @@ public class ObeliskController : MonoBehaviour
 
     public void AddToOfferedMemory(ItemObject memory)
     {
+        AudioManager.instance.Play("ClickButton");
         memoriesGiven.Add(memory);
         memoriesPlayer.Remove(memory);
         OfferedMemoriesBox.UpdateMemories(memoriesGiven);
@@ -81,6 +83,7 @@ public class ObeliskController : MonoBehaviour
 
     public void CloseScreen()
     {
+        AudioManager.instance.Play("ClickButton");
         memoriesGiven.Clear();
         memoriesPlayer.Clear();
         player.EnableControls();
@@ -89,20 +92,21 @@ public class ObeliskController : MonoBehaviour
 
     public void SaveMemories()
     {
+        AudioManager.instance.Play("ClickButton");
+
         switch (memoriesGiven.Count)
         {
             case 0:
                 anim.SetTrigger("FadeScreen");
-                GameScenes.instance.setNextScene(3);
+                GameScenes.instance.SetNextScene(4);
                 GameScenes.instance.LoadLevel(1);
                 break;
             case 1:
                 if (memoriesGiven.Contains(AllMemories[0]))
                 {
                     anim.SetTrigger("FadeScreen");
-                    GameScenes.instance.setNextScene(4);
+                    GameScenes.instance.SetNextScene(5);
                     GameScenes.instance.LoadLevel(1);
-                    Debug.Log("Final flor");
                 }
                 break;
         }

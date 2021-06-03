@@ -9,7 +9,7 @@ public class MirrorMoment : MonoBehaviour
     {
         player.DisableControls();
         player.EnableKey("interact");
-        dialogue.resetDialogue();
+        dialogue.ResetDialogue();
         dialogue.Play();
     }
 
@@ -20,11 +20,11 @@ public class MirrorMoment : MonoBehaviour
         {
             player.EnableControls();
             dialogue.Play();
-        }
 
-        if (dialogue.getDialogueEnded())
-        {
-            gameObject.SetActive(false);
+            if (dialogue.GetDialogueEnded() && dialogue.GetEndLine())
+            {
+                gameObject.SetActive(false);
+            }
         }
     }
 }

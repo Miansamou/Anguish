@@ -2399,7 +2399,7 @@ MonoBehaviour:
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 10
+  m_PixelsPerUnitMultiplier: 1
 --- !u!114 &133362746636397707
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4359,19 +4359,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2fc5809d5061c404dbbc4933102018b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MasterSound: {fileID: 133362747570679592}
-  UISound: {fileID: 133362747804952553}
-  SFXSound: {fileID: 133362746156607544}
-  MusicSound: {fileID: 133362748085119871}
+  masterSound: {fileID: 133362747570679592}
+  uiSound: {fileID: 133362747804952553}
+  sfxSound: {fileID: 133362746156607544}
+  musicSound: {fileID: 133362748085119871}
   mixer: {fileID: 24100000, guid: 0d719c7f0140d364daf3082d3dcc418c, type: 2}
-  Language: {fileID: 133362746202883874}
+  menuButtons: {fileID: 133362747273202651}
+  language: {fileID: 133362746202883874}
   resolutionDropdown: {fileID: 133362747848594368}
   fullScreen: {fileID: 133362747641896160}
   settings:
   - {fileID: 133362747283678919}
   - {fileID: 133362748074866812}
   - {fileID: 133362746216286673}
-  MenuButtons: {fileID: 133362747273202651}
 --- !u!1 &133362747111080604
 GameObject:
   m_ObjectHideFlags: 0

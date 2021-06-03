@@ -6,7 +6,7 @@ public class BackMenuController : MonoBehaviour
 {
     public void BackMenu()
     {
-        GameScenes.instance.setNextScene(0);
+        GameScenes.instance.SetNextScene(0);
         GameScenes.instance.LoadLevel(0);
     }
 }

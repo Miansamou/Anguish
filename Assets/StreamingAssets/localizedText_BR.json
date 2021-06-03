@@ -85,44 +85,20 @@
             "value": "Música"
         },
         {
-            "key": "ymir_intro_1",
-            "value": "Olá, pequenino"
+            "key": "movement_tutorial",
+            "value": "Use W, S, A e D para se movimentar"
         },
         {
-            "key": "ymir_intro_2",
-            "value": "Ouvi sua voz, mas… estava meio rouca e distante"
+            "key": "interact_tutorial",
+            "value": "Aperte F ou BARRA DE ESPAÇO para interagir com elementos do cenário"
         },
         {
-            "key": "ymir_intro_3",
-            "value": "O que aconteceu?"
+            "key": "run_tutorial",
+            "value": "Use SHIFT para correr"
         },
         {
-            "key": "ymir_intro_4",
-            "value": "Parece não se lembrar de mim, me parece estar… assustado..."
-        },
-        {
-            "key": "ymir_intro_5",
-            "value": "Sou Ymir, a deusa da natureza de Gahats, e também sua guia."
-        },
-        {
-            "key": "ymir_intro_6",
-            "value": "Você me parece estranho, me parece perdido pequenino"
-        },
-        {
-            "key": "ymir_intro_7",
-            "value": "Ah, vejo que sofreu muito, mas você deve aprender a seguir em frente"
-        },
-        {
-            "key": "ymir_intro_8",
-            "value": "Será que consegue enfrentar o passado para isso?"
-        },
-        {
-            "key": "ymir_intro_9",
-            "value": "Não tema, mas cuidado, nem tudo é o que pode parecer"
-        },
-        {
-            "key": "ymir_intro_10",
-            "value": "Boa sorte, meu pequenino..."
+            "key": "inventory_tutorial",
+            "value": "Use TAB para accessar o inventário"
         },
         {
             "key": "open_cell",
@@ -133,52 +109,84 @@
             "value": "Abrir porta"
         },
         {
-            "key": "movement_tutorial",
-            "value": "Use W, S, A e D para se movimentar"
-        },
-        {
-            "key": "interact_tutorial",
-            "value": "Aperte F para interagir com elementos do cenário"
-        },
-        {
-            "key": "other_tutorial",
-            "value": "Use SHIFT para correr e TAB para accessar o inventário"
-        },
-        {
             "key": "look_mirror",
             "value": "Olhar o espelho"
         },
         {
-            "key": "looking_mirror",
-            "value": "Annwn?"
+            "key": "prison_flower",
+            "value": "Chave de cela"
+        },
+        {
+            "key": "receive_prison_flower_key",
+            "value": "Você uma chave de cela"
+        },
+        {
+            "key": "flower",
+            "value": "Flor"
+        },
+        {
+            "key": "receive_flower_carnation",
+            "value": "Você recebeu um cravo"
+        },
+        {
+            "key": "flower_carnation",
+            "value": "Cravo"
+        },
+        {
+            "key": "receive_flower_gardenia",
+            "value": "Você recebeu uma gardênia"
+        },
+        {
+            "key": "flower_gardenia",
+            "value": "Gardênia"
+        },
+        {
+            "key": "receive_flower_winterberry",
+            "value": "Você recebeu um azevinho"
+        },
+        {
+            "key": "flower_winterberry",
+            "value": "Azevinho"
+        },
+        {
+            "key": "receive_flower_memory",
+            "value": "Você recebeu a memória da flor"
+        },
+        {
+            "key": "flower_memory_name",
+            "value": "Memória da flor"
+        },
+        {
+            "key": "flower_memory",
+            "value": "A criatura se lembra do momento em que estava completamente ferido e deixando rastros de sangue na neve, até ser encontrado por uma  Hunera que decide levá-lo para sua cabana afim de cuidar dos seus ferimentos, lhe dando o nome de Biske."
+        },
+        {
+            "key": "pedestal",
+            "value": "Pedestal"
+        },
+        {
+            "key": "offered_memories",
+            "value": "Memórias oferecidas"
+        },
+        {
+            "key": "player_memories",
+            "value": "Memórias disponíveis"
         },
         {
             "key": "myra_title",
             "value": "Memórias da Myra"
         },
         {
-            "key": "unknownphrase_1",
-            "value": "Mas que frio..."
+            "key": "explore_myra",
+            "value": "Explore a área"
         },
         {
-            "key": "unknownphrase_2",
-            "value": "O que é aquilo na neve?"
+            "key": "find_the_correct_flower",
+            "value": "Encontre a flor correta"
         },
         {
-            "key": "ymirtalkmyra_1",
-            "value": "Pequenino, olhe ao redor"
-        },
-        {
-            "key": "ymirtalkmyra_2",
-            "value": "Encontre o cheiro da salvação, do dia que ela encontrou sua pureza e doçura"
-        },
-        {
-            "key": "ymirtalkmyra_3",
-            "value": "A cor da neve que se mistura ao frio do seu sangue no momento da morte"
-        },
-        {
-            "key": "ymirtalkmyra_4",
-            "value": "Leve esse cheiro para uma cabana, assim estará mais perto das respostas que precisa obter, pequenino."
+            "key": "finished_area",
+            "value": "Área finalizada"
         },
         {
             "key": "loading",
@@ -197,6 +205,14 @@
             "value": "O inventário está cheio"
         },
         {
+            "key": "deliver_memories",
+            "value": "Entregar memórias"
+        },
+        {
+            "key": "back_to_menu",
+            "value": "Voltar ao menu?"
+        },
+        {
             "key": "take_item",
             "value": "Pegar"
         },
@@ -209,32 +225,8 @@
             "value": "Remover"
         },
         {
-            "key": "prison_flower",
-            "value": "Chave de cela"
-        },
-        {
-            "key": "flower",
-            "value": "Flor"
-        },
-        {
-            "key": "tent",
-            "value": "Cabana"
-        },
-        {
-            "key": "bring_flower",
-            "value": "Traga a flor..."
-        },
-        {
-            "key": "flower_carnation",
-            "value": "Cravo"
-        },
-        {
-            "key": "flower_gardenia",
-            "value": "Gardênia"
-        },
-        {
-            "key": "flower_winterberry",
-            "value": "Azevinho"
+            "key": "someone",
+            "value": "???"
         },
         {
             "key": "give",
@@ -245,88 +237,68 @@
             "value": "Livro pequeno"
         },
         {
-            "key": "medicinal_book",
-            "value": "Livro medicinal"
+            "key": "receive_small_book",
+            "value": "Você recebeu um livro pequeno"
         },
         {
-            "key": "back_to_menu",
-            "value": "Voltar ao menu?"
+            "key": "ymir_intro_1",
+            "value": "Continue..."
         },
         {
-            "key": "winterberry_description",
-            "value": "Ilex é uma espécie de flor sagrada e é originária do norte de Gahats, usada para fins medicinais. A planta perde todas as folhas no inverno, só restam os frutos típicos que são ligeiramente tóxicas para os Huneros. As folhas de Ilex simbolizam o amor e a esperança, durante séculos, ela foi a portadora de sorte. Os Huneros adoravam a árvore e a usavam para manter as bruxas (e outros males) afastados. Você nunca deve cortar uma árvore ou galho de Ilex porque isso traz azar."
+            "key": "ymir_intro_2",
+            "value": "Não desista..."
         },
         {
-            "key": "gardenia_description",
-            "value": "A Gardênia é uma planta muito usada para demonstrar sentimentos. Ela está associada à inocência, à sinceridade e à doçura, ou seja a sentimentos puros. E além das suas propriedades medicinais ela é muito reconhecida pelo seu perfume, recebendo homenagem com músicas pelos Huneros."
+            "key": "ymir_intro_3",
+            "value": "Essas cicatrizes, consigo senti-las."
         },
         {
-            "key": "carnation_description",
-            "value": "O cravo é uma flor que deve ser cultivada em solo quente, adubado e não muito úmido. A flor cravo representa a boa sorte, ou seja, o dom de atrair bênçãos e vitórias. O seu perfume envolvente e sedutor e suas cores vibrantes alegram e aquecem o coração tanto de quem dá um cravo de presente, como de quem recebe também."
+            "key": "ymir_intro_4",
+            "value": "Suponho que não está se recordando de minha voz. Não se assuste, estou aqui para ajudá-lo."
         },
         {
-            "key": "other_flower",
-            "value": "Não, traga outra flor..."
+            "key": "ymir_intro_5",
+            "value": "Sou Ymir, sou uma das Deusas de Gahats. A Deusa protetora da natureza."
         },
         {
-            "key": "wrong_flower_1",
-            "value": "NÃO!! O QUE VOCÊ FEZ!"
+            "key": "ymir_intro_6",
+            "value": "Vejo que estás perdido, pequenino."
         },
         {
-            "key": "wrong_flower_2",
-            "value": "COMO OUSOU CORTAR A RAMA SAGRADA?!"
+            "key": "ymir_intro_7",
+            "value": "Posso ajudá-lo a recuperar sua essência, mas não será um caminho fácil."
         },
         {
-            "key": "wrong_flower_3",
-            "value": "Saia daqui e jamais volte, aberração!"
+            "key": "ymir_intro_8",
+            "value": "Precisará de coragem para desbravar este sinuoso percurso."
         },
         {
-            "key": "correct_flower_1",
-            "value": "Mas.. que frio.."
+            "key": "ymir_intro_9",
+            "value": "Quando estiver pronto, feche seus olhos. Vou guia-lo para o lugar mais próximo das suas memórias perdidas."
         },
         {
-            "key": "correct_flower_2",
-            "value": "Aquilo.. o que é aquilo na neve?"
+            "key": "ymirtalkentry_1",
+            "value": "Vejo que acordou."
         },
         {
-            "key": "correct_flower_3",
-            "value": "Uma flor ensanguentada?"
+            "key": "ymirtalkentry_2",
+            "value": "À partir daqui você encontrará as respostas que precisa."
         },
         {
-            "key": "correct_flower_4",
-            "value": "Não é um bom sinal, de onde vem esse sangue..."
+            "key": "ymirtalkentry_3",
+            "value": "Porém tome cautela, principalmente com suas escolhas."
         },
         {
-            "key": "correct_flower_5",
-            "value": "MEU DEUS! É um dragão? Está a beira da morte"
+            "key": "ymirtalkmyra_1",
+            "value": "Pequenino, este lugar foi onde seu vigor foi mais desafiado."
         },
         {
-            "key": "correct_flower_6",
-            "value": "Preciso levar ele direto para a minha cabana, ainda há tempo para salvá-lo."
+            "key": "ymirtalkmyra_2",
+            "value": "Este ambiente gélido quase se tornou o lar de seu último suspiro."
         },
         {
-            "key": "receive_flower_memory",
-            "value": "Você recebeu a memória da flor."
-        },
-        {
-            "key": "flower_memory_name",
-            "value": "Memória da flor"
-        },
-        {
-            "key": "flower_memory",
-            "value": "A criatura se lembra do momento em que um dragão completamente ferido deixa rastros de sangue na neve, até ser encontrado por uma  Hunera que decide levá-lo para sua cabana afim de cuidar dos seus ferimentos. Seria ele o dragão?!"
-        },
-        {
-            "key": "need_remedy_1",
-            "value": "Rápido, preciso fazer um remédio"
-        },
-        {
-            "key": "need_remedy_2",
-            "value": "Ai ai, onde ta o meu jarro, preciso de seiva também"
-        },
-        {
-            "key": "pedestal",
-            "value": "Pedestal"
+            "key": "ymirtalkmyra_3",
+            "value": "Novamente sua valentia será desafiada, para explorar esta área em busca de sua memória."
         },
         {
             "key": "ymir_explanation_1",
@@ -345,12 +317,140 @@
             "value": "Mas esteja certo de todas as suas decisões, e o rumo que busca seguir daqui para frente."
         },
         {
-            "key": "offered_memories",
-            "value": "Memórias oferecidas"
+            "key": "close_eyes",
+            "value": "Fechar os olhos"
         },
         {
-            "key": "player_memories",
-            "value": "Memórias disponíveis"
+            "key": "looking_mirror",
+            "value": "Rannwn?"
+        },
+        {
+            "key": "medicinal_book",
+            "value": "Livro medicinal"
+        },
+        {
+            "key": "winterberry_description",
+            "value": "Azevinho é uma variação da sagrada flor Ilex e é originário do norte de Gahats. A planta perde todas as folhas no inverno, só restam os frutos típicos que são ligeiramente tóxicas para os Huneros. As folhas de Ilex e sua derivações simbolizam o amor e a esperança, durante séculos, ela foi a portadora de sorte. Os Huneros adoravam a árvore e a usavam para manter as bruxas (e outros males) afastados. Você nunca deve cortar uma árvore ou galho de Ilex porque isso traz azar."
+        },
+        {
+            "key": "gardenia_description",
+            "value": "A Gardênia é uma planta muito usada para fins medicinais.. Ela está associada à inocência, à sinceridade e à doçura, ou seja a sentimentos puros. E além das suas propriedades medicinais ela é muito reconhecida pelo seu perfume, recebendo homenagem com músicas pelos Huneros."
+        },
+        {
+            "key": "carnation_description",
+            "value": "O cravo é uma flor que deve ser cultivada em solo quente, adubado e não muito úmido. A flor cravo representa a boa sorte, ou seja, o dom de atrair bênçãos e vitórias. O seu perfume envolvente e sedutor e suas cores vibrantes alegram e aquecem o coração tanto de quem dá um cravo de presente, como de quem recebe também."
+        },
+        {
+            "key": "bring_flower",
+            "value": "Traga a flor..."
+        },
+        {
+            "key": "other_flower",
+            "value": "Esta flor é ineficaz para o que eu preciso...traga outra."
+        },
+        {
+            "key": "wrong_flower_1",
+            "value": "O QUE VOCÊ FEZ?!"
+        },
+        {
+            "key": "wrong_flower_2",
+            "value": "C-como se atreve a retirar a MINHA rama sagrada?! Esta é uma rama que demora muito para crescer e só é plantada em regiões frias!"
+        },
+        {
+            "key": "wrong_flower_3",
+            "value": "Eu estava cultivando esta planta por meses e VOCÊ a arrancou."
+        },
+        {
+            "key": "wrong_flower_4",
+            "value": "Saia daqui antes que eu mude de ideia e te cace."
+        },
+        {
+            "key": "correct_flower_1",
+            "value": "Oh...você por aqui?"
+        },
+        {
+            "key": "correct_flower_2",
+            "value": "Imagino que não deve se lembrar de mim..."
+        },
+        {
+            "key": "correct_flower_3",
+            "value": "Meu nome é Myra, e...eu sou uma Hunera."
+        },
+        {
+            "key": "correct_flower_4",
+            "value": "Seu povo e o meu são bem diferentes, eu diria."
+        },
+        {
+            "key": "correct_flower_5",
+            "value": "E pela sua expressão você sequer lembra do que aconteceu, não é?"
+        },
+        {
+            "key": "correct_flower_6",
+            "value": "Tudo bem...vou te explicar o que houve naquele dia."
+        },
+        {
+            "key": "correct_flower_7",
+            "value": "Não era um dia como qualquer outro. Uma tempestade de neve tomou conta das regiões...era dificil até de se locomover."
+        },
+        {
+            "key": "correct_flower_8",
+            "value": "Mas eu precisava colher frutos e flores para fazer os remédios necessários aos Huneros."
+        },
+        {
+            "key": "correct_flower_9",
+            "value": "Foi lá....no meio daquele frio...daquela neve sem fim...que eu te encontrei."
+        },
+        {
+            "key": "correct_flower_10",
+            "value": "Parecia tão...desprotegido, tão fraco...precisava de ajuda urgente."
+        },
+        {
+            "key": "correct_flower_11",
+            "value": "Nessa hora, tirei meu manto e coloquei em volta do seu corpo frio"
+        },
+        {
+            "key": "correct_flower_12",
+            "value": "A luta contra a neve não foi fácil, mas eu precisava te salvar..."
+        },
+        {
+            "key": "correct_flower_13",
+            "value": "Os Huneros sempre nos incentivaram a caçar, porém não sou assim."
+        },
+        {
+            "key": "correct_flower_14",
+            "value": "Queria te manter seguro não só da nevasca, mas até mesmo do meu próprio povo."
+        },
+        {
+            "key": "correct_flower_15",
+            "value": "O carreguei até minha cabana e lá percebi que corria contra o tempo para salvar sua vida."
+        },
+        {
+            "key": "correct_flower_16",
+            "value": "Com muita pressa, fiz uma sopa medicinal com a gardênia que colhi logo antes de te ver na neve...curioso, não?"
+        },
+        {
+            "key": "correct_flower_17",
+            "value": "Por sorte não foi tarde demais, e ver você se recuperando com a sopa, mesmo estando inconsciente, me deixava muito feliz e com o coração em paz."
+        },
+        {
+            "key": "correct_flower_18",
+            "value": "Naquele momento, ao te observar descansando... Me fez sentir completamente realizada."
+        },
+        {
+            "key": "correct_flower_19",
+            "value": "Você me fez florescer."
+        },
+        {
+            "key": "correct_flower_20",
+            "value": "Essa é a origem do nome que dei à você. Biske significa \"Florescer\" na minha língua e também combina contigo."
+        },
+        {
+            "key": "correct_flower_21",
+            "value": "Agora que você sabe de tudo que aconteceu naquele dia... acredito que você possa ficar com isto."
+        },
+        {
+            "key": "correct_flower_22",
+            "value": "Continue valente, meu dragãozinho. Espero te ver em breve."
         },
         {
             "key": "final_0_0",

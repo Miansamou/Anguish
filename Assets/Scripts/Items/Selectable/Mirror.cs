@@ -1,10 +1,14 @@
 using UnityEngine;
 
-public class Mirror : Interactable
+public class Mirror : IInteractable
 {
-    public GameObject textMessage;
     public GameObject mirrorMessage;
     public string key;
+
+    private void Start()
+    {
+        player = GameObject.FindWithTag("Player").GetComponent<PlayerController>();
+    }
 
     public override void Act()
     {
@@ -22,9 +26,10 @@ public class Mirror : Interactable
 
     public override void Acting()
     {
-        player.DisableKey("jump");
         player.DisableKey("movement");
         player.DisableKey("run");
+        player.DisableKey("tab");
+        player.DisableKey("esc");
         mirrorMessage.SetActive(true);
     }
 

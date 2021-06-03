@@ -37,7 +37,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _BaseMap:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 2800000, guid: bc4ba83445420ce4099d9bd03704b3d3, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _BumpMap:
@@ -61,7 +61,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 2800000, guid: bc4ba83445420ce4099d9bd03704b3d3, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTexture:
@@ -158,7 +158,7 @@ Material:
     - Vector2_0057cbeeb0914935afc82119fb59b286: {r: 1, g: 1, b: 0, a: 0}
     - Vector2_95eaaa1c97214e178d99d2e0f8603e44: {r: 0.5, g: 0.25, b: 0, a: 0}
     - Vector2_fbc0ed89dd184c7b90d4bbd45058e43f: {r: 0, g: 0, b: 0, a: 0}
-    - _BaseColor: {r: 0.345838, g: 0, b: 0.3584906, a: 1}
+    - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0.8113208, g: 0.746262, b: 0.746262, a: 1}
     - _EmissionMapChannelMask: {r: 1, g: 1, b: 1, a: 0}

@@ -3,48 +3,54 @@ using System.Collections.Generic;
 using System;
 using UnityEngine;
 using UnityEngine.Audio;
-using UnityEngine.SceneManagement;
 
 public class AudioManager : MonoBehaviour
 {
-    public AudioMixerGroup musicGroup;
-    public AudioMixerGroup sfxGroup;
-    public AudioMixerGroup uiGroup;
-    public AudioMixerGroup voicesGroup;
-
-    [Header("Sounds Library")]
-    public Sound[] musics;
-    public Sound[] sfx;
-    public Sound[] ui;
-    public Sound[] voices;
+    #region variables
 
     public static AudioManager instance;
 
+    [Header("Sounds Groups")]
+    [SerializeField]
+    private AudioMixerGroup musicGroup;
+    [SerializeField]
+    private AudioMixerGroup sfxGroup;
+    [SerializeField]
+    private AudioMixerGroup uiGroup;
+    [SerializeField]
+    private AudioMixerGroup voicesGroup;
+
+    [Header("Sounds Library")]
+    [SerializeField]
+    private Sound[] musics;
+    [SerializeField]
+    private Sound[] sfx;
+    [SerializeField]
+    private Sound[] ui;
+    [SerializeField]
+    private Sound[] voices;
+
     private Sound currentMusic;
+    private Dictionary<string, AudioSource> soundsPlaying;
 
-    private Dictionary<string, AudioSource> SoundsPlaying;
+    #endregion
 
-    // Start is called before the first frame update
+    #region initialization
+
     void Awake()
     {
         if (instance == null)
         {
             instance = this;
         }
-        else if (SceneManager.GetActiveScene().name != "Menu")
-        {
-            Destroy(instance.gameObject);
-            instance = this;
-        }
-        else
+        else if (instance != this)
         {
             Destroy(gameObject);
-            return;
         }
         
-        DontDestroyOnLoad(gameObject);
+        DontDestroyOnLoad(instance);
 
-        SoundsPlaying = new Dictionary<string, AudioSource>();
+        soundsPlaying = new Dictionary<string, AudioSource>();
 
         InitializeAudioSources(musics, musicGroup);
         InitializeAudioSources(sfx, sfxGroup);
@@ -66,64 +72,56 @@ public class AudioManager : MonoBehaviour
         }
     }
 
+    #endregion
+
+    #region manager sounds
+
     private void Update()
     {
         RemoveSoundsNotPlaying();
     }
 
-    public void Play(string name, bool saveAudio = false)
+    public void Play(string name, bool saveAudio = false, bool playPaused = false)
     {
         AudioSource audio = null;
-        try
+        Sound s = null;
+
+        if (playPaused && soundsPlaying.ContainsKey(name))
         {
-            Sound s = Array.Find(sfx, sound => sound.name == name);
+            soundsPlaying[name].Play();
+            return;
+        }
+
+        s = Array.Find(sfx, sound => sound.name == name);
+        if(s != null)
+        {
             s.source.Play();
             audio = s.source;
         }
-        catch
-        {
-            //Debug.Log(name + " not found in sfx");
+
+        s = Array.Find(ui, sound => sound.name == name);
+        if (s != null)
+        { 
+            s.source.Play();
+            audio = s.source;
         }
 
-        try
-        {
-            Sound u = Array.Find(ui, sound => sound.name == name);
-            u.source.Play();
-            audio = u.source;
-        }
-        catch
-        {
-            //Debug.Log(name + " not found in ui");
-        }
-
-        try
-        {
-            Sound v = Array.Find(voices, sound => sound.name == name);
-            v.source.Play();
-            audio = v.source;
-        }
-        catch
-        {
-            //Debug.Log(name + " not found in voices");
+        s = Array.Find(voices, sound => sound.name == name);
+        if (s != null)
+        { 
+            s.source.Play();
+            audio = s.source;
         }
 
         if(saveAudio)
             AddSoundsPlaying(name, audio);
 
-        try
+        s = Array.Find(musics, sound => sound.name == name);
+        if(s != null)
         {
-
-            Sound nextMusic = Array.Find(musics, sound => sound.name == name);
-            Debug.Log(nextMusic.name);
-            currentMusic = nextMusic;
-            currentMusic.source.volume = 1;
-            currentMusic.source.Play();
-
-            return;
-        }
-        catch
-        {
-            //Debug.Log(name + " not found in musics");
+        currentMusic = s;
+        currentMusic.source.volume = 1;
+        currentMusic.source.Play();
         }
     }
 
@@ -134,6 +132,67 @@ public class AudioManager : MonoBehaviour
             currentMusic.source.Stop();
         }
     }
+
+    public void StopSound(string name)
+    {
+        if (soundsPlaying.ContainsKey(name))
+        {
+            soundsPlaying[name].Stop();
+        }
+    }
+
+    public void PauseSound(string name)
+    {
+        if (soundsPlaying.ContainsKey(name))
+        {
+            soundsPlaying[name].Pause();
+        }
+    }
+
+    private void RemoveSoundsNotPlaying()
+    {
+        List<string> keys = new List<string>();
+        foreach (KeyValuePair<string, AudioSource> kvp in soundsPlaying)
+        {
+            if (!kvp.Value.isPlaying)
+            {
+                keys.Add(kvp.Key);
+            }
+        }
+
+        foreach (string key in keys)
+        {
+            soundsPlaying.Remove(key);
+        }
+    }
+
+    private void AddSoundsPlaying(string name, AudioSource source)
+    {
+        if (source == null)
+            return;
+        soundsPlaying.Add(name, source);
+    }
+
+    #endregion
+
+    #region get/set
+    public bool GetAudioIsPlaying(string name)
+    {
+        if (soundsPlaying.ContainsKey(name))
+            return true;
+        return false;
+    }
+
+    public bool GetMusicIsPlaying()
+    {
+        if (currentMusic != null && currentMusic.source.isPlaying)
+            return true;
+        return false;
+    }
+
+    #endregion
+
+    #region effects
 
     public IEnumerator FadeOut(float speed)
     {
@@ -147,60 +206,14 @@ public class AudioManager : MonoBehaviour
         }
     }
 
-    public bool getAudioIsPlaying(string name)
-    {
-        if (SoundsPlaying.ContainsKey(name))
-            return true;
-        return false;
-    }
-
-    public bool getMusicIsPlaying()
-    {
-        if (currentMusic != null && currentMusic.source.isPlaying)
-            return true;
-        return false;
-    }
-
-    private void AddSoundsPlaying(string name, AudioSource source)
-    {
-        if (source == null)
-            return;
-        SoundsPlaying.Add(name, source);
-    }
-
-    private void RemoveSoundsNotPlaying()
-    {
-        List<string> keys = new List<string>();
-        foreach (KeyValuePair<string, AudioSource> kvp in SoundsPlaying)
-        {
-            if (!kvp.Value.isPlaying)
-            {
-                keys.Add(kvp.Key);
-            }
-        }
-
-        foreach(string key in keys)
-        {
-            SoundsPlaying.Remove(key);
-        }
-    }
-
-    public void StopSound(string name)
-    {
-        if (SoundsPlaying.ContainsKey(name))
-        {
-            SoundsPlaying[name].Stop();
-        }
-    }
+    #endregion
 }
 
 [System.Serializable]
 public class Sound
 {
     public string name;
-
     public AudioClip clip;
-
     public bool loop;
 
     [Range(0f, 1f)]

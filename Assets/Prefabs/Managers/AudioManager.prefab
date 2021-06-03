@@ -61,6 +61,42 @@ MonoBehaviour:
     volume: 1
     pitch: 1
     source: {fileID: 0}
+  - name: RunningBrickSteps
+    clip: {fileID: 8300000, guid: 1e706e59f655aa443aff1eefabbf7b54, type: 3}
+    loop: 0
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+  - name: OpenCell
+    clip: {fileID: 8300000, guid: 982131b4d76345448b22e8b029245d37, type: 3}
+    loop: 0
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+  - name: OpenDoor
+    clip: {fileID: 8300000, guid: 46835564270b1a049964915337ec42f1, type: 3}
+    loop: 0
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+  - name: SnowSteps
+    clip: {fileID: 8300000, guid: 4fbe11d2b11c8a04ab64359d0668c122, type: 3}
+    loop: 0
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+  - name: RunningSnowSteps
+    clip: {fileID: 8300000, guid: e3cccd3f4f106624f93b24c62096ca6a, type: 3}
+    loop: 0
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+  - name: ObeliskInteract
+    clip: {fileID: 8300000, guid: e3adbba3a66134e4689f4b3d92ea66af, type: 3}
+    loop: 0
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
   ui:
   - name: DarkEntering
     clip: {fileID: 8300000, guid: 68fc242bf68ed4a4a97033a5686821c9, type: 3}
