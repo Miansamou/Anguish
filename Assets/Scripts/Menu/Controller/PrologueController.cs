@@ -51,6 +51,7 @@ public class PrologueController : MonoBehaviour
 
     void Update()
     {
+        Debug.Log(dialogue.GetEndLine());
         DialoguePhases();
     }
 
@@ -102,17 +103,18 @@ public class PrologueController : MonoBehaviour
                 }
                 break;
             case "sixth":
-                if (dialogue.GetEndLine())
+                if (player.GetInteractTrigger())
                 {
-                    if (dialogue.GetDialogueEnded())
+                    if (!dialogue.GetDialogueEnded())
+                    {
+                        if (dialogue.GetEndLine())
+                            dialogue.Play();
+                    }
+                    else
                     {
                         buttonEyes.interactable = true;
                         textButton.SetActive(true);
                         phase = "finish";
-                    }
-                    else if (player.GetInteractTrigger())
-                    {
-                        PlayDialogue();
                     }
                 }
                 break;

@@ -302,19 +302,19 @@
         },
         {
             "key": "ymir_explanation_1",
-            "value": "Vejo que encontrou este pedestal, pequenino."
+            "value": "Vejo que encontrou o pedestal das suas memórias, pequenino."
         },
         {
             "key": "ymir_explanation_2",
-            "value": "Ele pode ser a sua saída deste lugar a qualquer momento"
+            "value": "Aqui você poderá depositar todas as memórias que encontrar."
         },
         {
             "key": "ymir_explanation_3",
-            "value": "Aqui você pode depositar suas memórias e seguir uma nova fase em sua vida."
+            "value": "Mas esteja certo de todas as suas decisões, pois sua escolha definirá seu próximo destino."
         },
         {
             "key": "ymir_explanation_4",
-            "value": "Mas esteja certo de todas as suas decisões, e o rumo que busca seguir daqui para frente."
+            "value": "Afinal, nós escolhemos o que gostaríamos de lembrar."
         },
         {
             "key": "close_eyes",
@@ -438,7 +438,7 @@
         },
         {
             "key": "correct_flower_19",
-            "value": "Você me fez florescer."
+            "value": "Você me fez fl orescer."
         },
         {
             "key": "correct_flower_20",
@@ -454,27 +454,23 @@
         },
         {
             "key": "final_0_0",
-            "value": "A pequena criatura saiu do local, mas sem coragem de levar consigo nenhuma das memórias do seu passado, não se sabe se fora por medo ou pela vontade de iniciar uma nova vida completamente do zero, o que se sabe é que ela saiu do pesadelo que a assombrava há muito tempo, a agonia miserável cercada pela curiosa masmorra que enfrentara a cada noite enfim cessaria."
+            "value": "Ao ativar o pedestal sem nenhuma memória depositada, o pequeno dragão foi levado a uma escuridão profunda. Sem saber o que aconteceu, ele começou a correr incansavelmente à procura da saída ou de uma luz que pudesse guiá-lo para fora desse vazio que o assolava. Essa solidão despertou  medos e arrepios incessantes que o corrompia conforme o passar do tempo. Seus gritos de agonia ecoavam na tenebrosa solidão daquele vazio."
         },
         {
             "key": "final_0_1",
-            "value": "Tudo isso graças às bênçãos de Ymir, mas ao levar nenhuma memória para fora da masmorra, foi-se consigo sua consciência, e assim durante todo o restante de sua vida, a jovem criatura foi criada como um mero animal doméstico, cercada por sentimentos amorosos de uma Hunera da região."
-        },
-        {
-            "key": "final_0_2",
-            "value": "A criatura viveu por cerca de dez anos no recanto doméstico, falecendo aparentemente por causas naturais, mas com uma vida sem arrependimentos."
+            "value": "Aos poucos, a escuridão passou a sufocar seus gritos, e consumir a esperança que restava ao pequeno dragão, lhe proporcionando ainda mais angústias sobre sua decisão de não ter procurado a sua essência. Essas hesitações o botaram em circunstâncias de descrenças e desconfianças, que o faziam fugir de tudo aquilo que se tornaria um destino próspero, lhe causando receios de tudo e todos tornando-se assim a sua principal arma de sobrevivência, na qual ele usou para abandonar tudo aquilo que um dia ele poderia novamente chamar de lar."
         },
         {
             "key": "final_1_0",
-            "value": "“A lembrança do doce cheiro da primavera, que leva consigo a esperança capaz de confortar os corações dos mais necessitados, siga ela, meu pequenino, siga a pura Gardênia que repousa em seu coração, e agora desperta a essência do seu ser outrora desvanecido”. Essas foram as últimas frases escutadas pela criatura, antes de acordar do seu sono quase interminável, sem dúvidas era um recado de Ymir para que a criatura continuasse seguindo em frente sem deixar de ser quem sempre foi."
+            "value": "Após fechar os olhos, seus pensamentos se direcionaram a Ymir, seu corpo começou a se esquentar. Seu coração já não estava mais disparado e apreensivo. O dragão acreditava que aquilo era o socorro vindo diretamente de sua Deusa, pois em seguida ele pôde ouvir a Ymir novamente lhe confortando, lhe esclarecendo que agora tudo ficaria bem e que seu medo já não era mais necessário."
         },
         {
             "key": "final_1_1",
-            "value": "Ao acordar do sono profundo, ele se viu em uma cabana, seu corpo estava totalmente ferido e ele estava sendo cuidado por uma Hunera, inicialmente sentiu medo e desconforto, mas com o tempo esse tom arisco se transformou em uma profunda amizade, na qual junto dela ele sentia uma que estaria protegido, da mesma forma que ele podia confortar o coração dela com uma pureza própria."
+            "value": "Ela pediu para que ele abrisse os olhos e deslumbrasse do seu novo destino. Impulsivamente, o pequeno dragão abriu os olhos e viu-se sendo carregado no colo de uma Hunera, de cabelos longos, uma mulher forte e que de imediato passava a sensação de bondade e proteção contra tudo aquilo que o afligia. Sem se conter, ele a encara e involuntariamente começa a chorar em forma de agradecimento. Seu corpo ferido dificultava qualquer movimento, mas a ternura e os cuidados da Hunera, amenizavam as suas dores, e foi ali que ele soube em quem poderia confiar, pois naquele momento, ele encontrou o seu novo lar."
         },
         {
-            "key": "final_1_2",
-            "value": "A criatura viveu por cerca de onze anos como um amigo no lar da Hunera, falecendo aparentemente por causas naturais, mas com uma vida sem arrependimentos."
+            "key": "final_thanks",
+            "value": "Obrigado por jogar nosso jogo!!"
         },
         {
             "key": "null",

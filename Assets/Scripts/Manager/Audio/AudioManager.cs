@@ -120,7 +120,7 @@ public class AudioManager : MonoBehaviour
         if(s != null)
         {
         currentMusic = s;
-        currentMusic.source.volume = 1;
+        currentMusic.source.volume = s.volume;
         currentMusic.source.Play();
         }
     }
@@ -204,6 +204,8 @@ public class AudioManager : MonoBehaviour
             currentMusic.source.volume = audioVolume;
             yield return new WaitForSeconds(0.1f);
         }
+
+        currentMusic.source.Stop();
     }
 
     #endregion

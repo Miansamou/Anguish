@@ -54,6 +54,18 @@ MonoBehaviour:
     volume: 1
     pitch: 1
     source: {fileID: 0}
+  - name: Final_1_Music
+    clip: {fileID: 8300000, guid: 58bf7a8b3d502c9479588d28e167b837, type: 3}
+    loop: 0
+    volume: 0.2
+    pitch: 1
+    source: {fileID: 0}
+  - name: Final_0_Music
+    clip: {fileID: 8300000, guid: 440aa264285a5e54abf8aa223fecd8c7, type: 3}
+    loop: 0
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
   sfx:
   - name: BrickSteps
     clip: {fileID: 8300000, guid: d23f3f594feff144987c4be68c72cec3, type: 3}
@@ -110,4 +122,28 @@ MonoBehaviour:
     volume: 1
     pitch: 1
     source: {fileID: 0}
-  voices: []
+  voices:
+  - name: Final_1_Speech
+    clip: {fileID: 8300000, guid: ce9038fe6effadc4f920bdd930b991b9, type: 3}
+    loop: 0
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+  - name: Final_0_Speech
+    clip: {fileID: 8300000, guid: 75a7aff93b44cb3488937ba2b35c9a8c, type: 3}
+    loop: 0
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+  - name: DarkGrowl
+    clip: {fileID: 8300000, guid: 0dd97d4bde0824f44b9f4ebc414c305b, type: 3}
+    loop: 0
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+  - name: BiskeSad
+    clip: {fileID: 8300000, guid: b6ef84a5dfddc38449a7f2aa4ca0c672, type: 3}
+    loop: 0
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
